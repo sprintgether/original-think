@@ -1,0 +1,72 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    jdbc-url: jdbc:h2:mem:original_think_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+
+  # Email configuration
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: pe8977461@gmail.com
+    password: azerty:12
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    servlet:
+      multipart:
+        max-file-size: 10MB
+        max-request-size: 10MB
+        enabled: true
+  main:
+    jpa:
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+
+# Application configurations (just for test purpose)
+app:
+  roles:
+    admin: ADMIN
+    user: USER
+  security:
+    jwt:
+      secret: 0A7A690F19001C887DEB108AE40C54717E740385243437A863569C91BF8AC99B
+      expiration: 360000
+  token:
+    email:
+      verification:
+        duration: 360000
+    password:
+      reset:
+        duration: 360000
+
+  mail:
+    sendgrid:
+      key: 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
+      sender: simonsoft7@gmail.com
+
+  storage:
+    directory: /D:/Projets/original-think
+
+  client:
+    verify:
+      email:
+        path: "/auth/verify-email"
+    reset:
+      password:
+        path: "/auth/reset-password"
+    default-url: "http://localhost:4200"

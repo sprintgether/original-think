@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css?family=Caveat|Mali");
+
+:root {
+  --mainDark: #242325;
+  --mainGreen: #61e786;
+  --mainWhite: #fff;
+  --mainGrey: #eeeeee;
+}
+body {
+  font-family: "Mali", cursive;
+  background: var(--mainWhite);
+  color: var(--mainDark);
+}
+/* global */
+.text-green {
+  color: var(--mainGreen);
+}
+.text-slant {
+  font-family: "Caveat", cursive;
+}
+.green__btn {
+  color: var(--mainGreen);
+  border: 0.1rem solid var(--mainGreen);
+  background: transparent;
+}
+.green__btn:hover {
+  background: var(--mainGreen);
+  color: var(--mainWhite);
+}
+.title-underline {
+  width: 12rem;
+  height: 0.3rem;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 2rem;
+}
+.title-underline__center {
+  position: absolute;
+  height: 0.6rem;
+  background: var(--mainGreen);
+  width: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+}
+.blockquote {
+  border-left: 0.5rem solid var(--mainGreen);
+}
+/* end of global */
+
+/* navbar */
+.navbar {
+    background: var(--mainDark) !important;
+}
+
+.phone-icon {
+    color: var(--mainGreen);
+    border: 0.1rem solid var(--mainGreen);
+    padding: 0.5rem;
+    border-radius: 50%;
+  }
+  /* end of navbar */
+
+
+  li a {
+    font-weight: bold;
+    text-decoration: none;
+  }
+ 
+
+  li a:hover {
+    color: #ADA361 !important;
+    text-decoration: none;
+  }

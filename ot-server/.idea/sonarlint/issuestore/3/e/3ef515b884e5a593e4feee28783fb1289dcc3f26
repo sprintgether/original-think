@@ -1,0 +1,10 @@
+
+e
+java:S1128"PRemove this unused import 'com.sprintgether.otserver.repository.RoleRepository'.(‰Îž
+H
+java:S3416%"2Update this logger to use "AuthServiceImpl.class".(€°Û«
+¹
+java:S1130X"–Remove the declaration of thrown exception 'com.sprintgether.otserver.exception.OtDBItemNotFoundException', as it cannot be thrown from method's body.(Ö¤Šœúÿÿÿÿ8øë“”³/
+W	java:S125¢"<This block of commented-out lines of code should be removed.(Äÿ“ÿÿÿÿÿ
+@
+java:S1068%"*Remove this unused "LOGGER" private field.(€°Û«

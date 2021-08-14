@@ -1,0 +1,13 @@
+
+;
+java:S1165" Make this "message" field final.(ù„è¿ûÿÿÿÿ
+9
+java:S1165"#Make this "tokenValue" field final.(§¥•ğ
+2
+java:S1165"Make this "msg" field final.(­îøï
+F
+java:S1068"+Remove this unused "message" private field.(ù„è¿ûÿÿÿÿ
+D
+java:S1068".Remove this unused "tokenValue" private field.(§¥•ğ
+=
+java:S1068"'Remove this unused "msg" private field.(­îøï

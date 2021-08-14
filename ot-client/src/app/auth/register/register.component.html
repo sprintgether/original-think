@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row align-items-center" style="height: 100vh;">
+      <div class="col-lg-8 col-sm-6 col-12 d-flex  align-items-center justify-content-center" style="height: 500px;">
+        <!--div class="avatar-icon d-flex "></div-->
+          <a href="#"> <img src="../../assets/img/ot-logo.png" alt="team" width="60" class="img-fluid rounded-circle"/> </a> &nbsp;&nbsp;
+          <h6 class="align-self-center"> 
+            <span class="" style="color: #938953; font-size: 1.5em;">O</span><span>riginal  </span> 
+            <span style="color: #938953; font-size: 1.5em;">  T</span> <span>hinks</span>
+          </h6>         
+      </div>
+  
+      <div class="col-lg-4 col-sm-6 col-12 shadow pl-4 pr-4"
+        style="height: 500px; background-color: #E0DCC1; border-radius: 0 20px 0 0">
+        <h5 class="text-primary pt-1"  style="color: #615B36; font-weight: bold;">
+          <i class="fa fa-user-plus text-primary mb-3"></i> Register
+        </h5>
+        <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()" class="mt-5">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="email" class="text-primary">Email 
+                <span class="text-danger">*</span>
+              </label>
+              <input type="email" formControlName="email" placeholder="Entrez un email valide"
+                            class="form-control"
+                            [ngClass]="{ 'is-invalid': f.email.invalid && (f.email.dirty || f.email.touched) , 'is-valid': f.email.valid && (f.email.dirty || f.email.touched)}">
+              <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)" class="text-danger pt-1">
+                  <div *ngIf="f.email.errors.required"> L'email est obligatoire</div>
+                  <div *ngIf="f.email.errors.email">L'email n'est pas correct</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="password" class="text-primary">Password 
+                <span class="text-danger">*</span>
+              </label>
+              <input type="password" formControlName="password" placeholder="Entrer le mot de passe" class="form-control"
+              [ngClass]="{'is-invalid': f.password.invalid && (f.password.dirty || f.password.touched) }">
+                <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)" class="text-danger pt-1">
+                  <div *ngIf="f.password.errors.required">
+                    Le mot de passe est obligatoire
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="row justify-content-sm-center mt-1">
+            <div *ngIf="registerLoading" class="spinner-border text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+          <!--div class=" text-right tiny-text">
+            <a [routerLink]="['/auth/forgot-password']">
+              J'ai oublié mon mot de passe
+            </a>
+          </div-->
+          <input class="btn btn-primary btn-block mb-2 mt-4" type="submit"  style="font-weight: bold;" 
+              value="S'inscrire">
+          <div class="mt-2 text-center text-primary">
+            Non, j'ai déjà un compte.
+            <a [routerLink]="['/auth/login']" style="font-weight: bold;">
+              Login
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

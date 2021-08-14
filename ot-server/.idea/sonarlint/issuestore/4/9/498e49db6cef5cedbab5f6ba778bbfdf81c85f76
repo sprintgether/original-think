@@ -1,0 +1,10 @@
+
+J
+java:S1128&"/Remove this unused import 'java.util.Optional'.(¨˜ëÝüÿÿÿÿ
+]
+java:S1854G"BRemove this useless assignment to local variable "registeredUser".(§ÏÛŸøÿÿÿÿ
+´
+java:S1130A"–Remove the declaration of thrown exception 'com.sprintgether.otserver.exception.OtDBItemNotFoundException', as it cannot be thrown from method's body.(˜íÝù8Ì¡—”³/
+V	java:S125I"<This block of commented-out lines of code should be removed.(¾ž”‚ùÿÿÿÿ
+N
+java:S1481G"3Remove this unused "registeredUser" local variable.(§ÏÛŸøÿÿÿÿ

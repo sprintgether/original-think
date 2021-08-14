@@ -1,0 +1,26 @@
+.imageLogo{
+    background: url(../../../assets/img/ot-logo.png) center;
+}
+
+.position-last-block{
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: 5px;
+}
+
+.logo{
+    width: 20%; //50%
+}
+
+.connexion{
+    opacity: 0.6;
+    background-color: #4D3EAD; 
+}
+
+.connexion:hover{
+    opacity: 1 !important;
+    cursor: pointer;
+}
