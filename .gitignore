@@ -1,0 +1,56 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/ot-client/dist
+/ot-client/tmp
+/ot-client/out-tsc
+# Only exists if Bazel was run
+/ot-client/bazel-out
+
+# dependencies
+/ot-client/node_modules
+
+# profiling files
+/ot-client/chrome-profiler-events*.json
+/ot-client/speed-measure-plugin*.json
+
+# IDEs and editors
+/ot-client/.idea
+/ot-client.project
+/ot-client.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/ot-client/.sass-cache
+/ot-client/connect.lock
+/ot-client/coverage
+/ot-client/libpeerconnection.log
+/ot-client/npm-debug.log
+/ot-client/yarn-error.log
+/ot-client/testem.log
+/ot-client/typings
+
+# System Files
+/ot-client/.DS_Store
+/ot-client/Thumbs.db
+
+
+# Server
+
+/ot-server/HELP.md
+/ot-server/target/
+/ot-server/.idea
+/ot-server/!.mvn/wrapper/maven-wrapper.jar
+/ot-server/!**/src/main/**/target/
+/ot-server/!**/src/test/**/target/

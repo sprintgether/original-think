@@ -145,8 +145,6 @@ Psrc/main/java/com/sprintgether/otserver/exception/OtDBItemNotFoundException.jav
 Msrc/main/java/com/sprintgether/otserver/exception/PasswordResetException.java,a/a/aacd840db85162f5c5b2d1f7d92b406de7afb1ca
 
 Qsrc/main/java/com/sprintgether/otserver/exception/PasswordResetLinkException.java,d/b/dbfd369d0bca91555fc56a4c1f9f6858bae789a4
-7
-pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
 v
 Fsrc/main/java/com/sprintgether/otserver/validator/AuthorValidator.java,1/4/1494bab3359523f6cc5b513d65611fab46f1da9d
 t
@@ -187,3 +185,5 @@ n
 >src/main/java/com/sprintgether/otserver/model/dto/UserDto.java,0/7/07d7d1d1429b3992df7babcb176682270e4c17ef
 v
 Fsrc/main/java/com/sprintgether/otserver/controller/UserController.java,7/4/74aa00e369318d1b6a8d6f7dfdd9b6a958a67930
+7
+pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
