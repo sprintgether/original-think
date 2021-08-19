@@ -12,12 +12,12 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [FooterComponent],
   imports: [
     CommonModule,
-    HttpClientModule,
     ReactiveFormsModule,
     //AngularFontAwesomeModule,
     RouterModule,
     NgbModule,
     FormsModule,
+    HttpClientModule,
 ],
   exports: [
     FooterComponent,
@@ -26,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     RouterModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    
 ]
 })
 export class ShareModule { }

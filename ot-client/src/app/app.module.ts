@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ShareModule } from './share/share.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './_helper/auth-interceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AuthInterceptorService } from './_helper/auth-interceptor.service';
     BrowserModule,
     NgbModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     ShareModule
   ],
   providers: [

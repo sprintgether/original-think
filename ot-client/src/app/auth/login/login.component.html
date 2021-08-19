@@ -11,17 +11,17 @@
   
       <div class="col-lg-4 col-sm-6 col-12 shadow pl-4 pr-4"
         style="height: 500px; background-color: #E0DCC1; border-radius: 0 20px 0 0">
-        <h5 class="pt-1"  style="font-weight: bold; color: #938953;">
+        <h5 class="pt-1"  style="font-weight: bold; color: #615B36;">
           <i class="fa fa-sign-in mb-3"></i> 
-          <span style="color: #4D3EAD;">  Connexion</span> 
+          <span style="color: #615B36; font-weight: bold;">  Connexion</span> 
         </h5>
 
         <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" class="mt-5">
           <div class="form-row">
             <div class="form-group col-md-12">
-              <label for="email" style="color: #4D3EAD; font-weight: bolder;">Email <span class="text-danger">*</span></label>
+              <label for="email" style="color: #938953;">Email <span class="text-danger">*</span></label>
               <input type="email" formControlName="email" placeholder="Entrez un email valide"
-                            class="form-control mb-2"
+                            class="form-control"
                             [ngClass]="{ 'is-invalid': f.email.invalid && (f.email.dirty || f.email.touched) , 
                                           'is-valid': f.email.valid && (f.email.dirty || f.email.touched)}">
                   <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)" class="text-danger pt-1">
@@ -36,7 +36,7 @@
           </div>
           <div class="form-row">
             <div class="form-group col-md-12">
-              <label for="password" style="color: #4D3EAD; font-weight: bolder;">Password <span class="text-danger">*</span></label>
+              <label for="password" style="color: #938953;">Password <span class="text-danger">*</span></label>
               <input type="password" formControlName="password" placeholder="Entrer le mot de passe" class="form-control"
               [ngClass]="{'is-invalid': f.password.invalid && (f.password.dirty || f.password.touched) }">
                 <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)" class="text-danger pt-1">
@@ -52,14 +52,14 @@
             </div>
           </div>
           <div class=" text-right text-primary">
-            <a [routerLink]="['/auth/forgot-password']" style=" color: #4D3EAD; font-weight: bolder;">
+            <a [routerLink]="['/auth/forgot-password']" style=" color: #615B36; font-weight: bold;">
               J'ai oublié mon mot de passe
             </a>
           </div>
           <input class="btn btn-primary btn-block mb-2 mt-2 connexion" type="submit" value="Se connecter" >
-          <div class="mt-2 text-left" style="color:#4D3EAD;" >
+          <div class="mt-2 text-left" style="color:#938953;" >
             Non, Je n'ai pas encore un compte.
-            <a [routerLink]="['/auth/register']" style="font-weight: bold; color: #4D3EAD;" >
+            <a [routerLink]="['/auth/register']" style="font-weight: bold; color: #615B36;" >
               S'inscrire
             </a>
           </div>
