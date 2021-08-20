@@ -17,16 +17,56 @@
           <div class="topbar-social">
             <div class="topbar-date d-none d-lg-inline-block"><i class="fa fa-calendar"></i>{{today | date:'medium'}}
             </div>
-            <ul class="social-area social-area-2">
+            <ul *ngIf="!username"  class="social-area social-area-2">
               <li><a class="facebook-icon" href="#"><i class="fa fa-facebook"></i></a></li>
               <li><a class="twitter-icon" href="#"><i class="fa fa-twitter"></i></a></li>
               <li><a class="youtube-icon" href="#"><i class="fa fa-youtube-play"></i></a></li>
               <li><a class="instagram-icon" href="#"><i class="fa fa-instagram"></i></a></li>
               <li><a class="google-icon" href="#"><i class="fa fa-google-plus"></i></a></li>
-            </ul>
+            </ul> &nbsp;&nbsp;
+            
+            <button *ngIf="!username" class="btn mb-2" style="background-color: #615B36; color: white; font-size: 1em;" [routerLink]="['/auth/login']"> 
+              <i class="fa fa-user-circle fa-xs"></i> &nbsp;
+              <span style="font-weight: bold;">SE  CONNECTER  </span>
+          </button> 
+
+
+          <div *ngIf="username" class="btn-group dropleft">
+            <button type="button" class="btn btn-connexion" data-toggle="dropdown" 
+            aria-haspopup="true" aria-expanded="false"  style="font-size: 30px; color: white;">
+              <i class="fa fa-user-circle fa-xs"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#" style="padding: 20px; font-size: 20px;">
+                <i class="fa fa-user-circle fa-xs"></i> &nbsp;
+                <span>{{username}}</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">
+                <i class="fa fa-key"></i> &nbsp;
+                <span>Change password</span> 
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="fa fa-sign-in"></i> &nbsp;
+                <span>Se deconncter</span> 
+              </a>
+              <a class="dropdown-item" href="#"> 
+                <i class="fa fa-info-circle"></i> &nbsp;
+                <span>Aide</span>
+              </a>
+            </div>
+          </div>
+
+            <!--button *ngIf="username" class="btn mb-2" style="color: white !important; " [routerLink]="['/auth/login']" style="font-size: 30px;"> 
+              <i class="fa fa-user-circle fa-xs"></i>
+          </button-->  
           </div>
 
         </div>
+
+        <!--div class="col-lg-2 col-md-2 mt-2 mt-md-0 text-md-right text-center">
+          <button class="btn" style="border: 1px solid red;"> <i class="fa fa-user"></i> SE CONNECTER</button>
+        </div-->
       </div>
     </div>
   </div>

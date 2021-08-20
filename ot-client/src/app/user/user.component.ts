@@ -8,7 +8,7 @@ import * as $ from 'jquery';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  username: string = "username";
+  username: string;
    //gestion des dates
    today: number = Date.now();
 
