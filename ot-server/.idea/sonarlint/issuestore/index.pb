@@ -91,8 +91,6 @@ v
 Fsrc/main/java/com/sprintgether/otserver/model/enums/EnumTokenType.java,f/2/f22e4f08dd87a6bac74591666f00262594ca41fa
 v
 Fsrc/main/java/com/sprintgether/otserver/model/enums/EnumMailState.java,f/8/f8f23871ce546423abcf45bf45d8f663ae800019
-r
-Bsrc/main/java/com/sprintgether/otserver/config/SendGridConfig.java,1/f/1fc95da15b2385a069990e6bdc1e387df2d2cf78
 ‚
 Rsrc/main/java/com/sprintgether/otserver/event/OnUserRegistrationCompleteEvent.java,7/b/7b081e454e84e63df71e7fbd071a4e1c24b23f6e
 k
