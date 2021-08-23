@@ -58,5 +58,4 @@ public class MailServiceImpl implements MailService {
         mail.setSendedAt(Instant.now());
         mailRepository.save(mail);
     }
-
 }

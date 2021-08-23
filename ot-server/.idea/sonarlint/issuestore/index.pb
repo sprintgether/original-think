@@ -101,8 +101,6 @@ k
 ;src/main/java/com/sprintgether/otserver/util/TokenUtil.java,0/c/0c2edb3a8f603178b80d5b8e76771d6233163ec3
 v
 Fsrc/main/java/com/sprintgether/otserver/service/core/TokenService.java,0/7/07733650b1efd25e6c1475eb117e4936895ec2d1
-p
-@src/main/java/com/sprintgether/otserver/service/MailService.java,b/5/b5bf2a0660979d5ea6c7a0d544d195e323b53e1d
 n
 >src/main/java/com/sprintgether/otserver/model/entity/Mail.java,3/8/38d61e3d5289e5b0e8517d784fd1f779615fc020
 Ž
@@ -133,8 +131,6 @@ w
 Gsrc/main/java/com/sprintgether/otserver/service/core/AuthorService.java,1/9/19144d1addce4b90631fdfc2b2ceb56523564a77
 o
 ?src/main/java/com/sprintgether/otserver/common/AppConstant.java,9/7/976b7fefb709903d0e987dc5c2a74a1d4142a305
-y
-Isrc/main/java/com/sprintgether/otserver/service/impl/MailServiceImpl.java,7/d/7d9ac44ab456b93d258433ff007bd4513427a9c9
 x
 Hsrc/main/java/com/sprintgether/otserver/exception/OtCommonException.java,1/2/128ce9916aa318ad17e43ce77809a69b24da1ac7
 
@@ -171,8 +167,6 @@ u
 Esrc/main/java/com/sprintgether/otserver/service/auth/AuthService.java,4/0/408b98c8c637d7b98e44fdcc4fca30be9c4493d9
 v
 Fsrc/main/java/com/sprintgether/otserver/controller/AuthController.java,4/9/498e49db6cef5cedbab5f6ba778bbfdf81c85f76
-p
-@src/main/java/com/sprintgether/otserver/OtServerApplication.java,6/3/6338c7dbc372b72745ecb9df0085a87cff1d7a2e
 n
 >src/main/java/com/sprintgether/otserver/model/entity/User.java,8/c/8cbe31a8b4145e23de6d15407cc1bf41b1e4b438
 u
@@ -185,5 +179,3 @@ n
 >src/main/java/com/sprintgether/otserver/model/dto/UserDto.java,0/7/07d7d1d1429b3992df7babcb176682270e4c17ef
 v
 Fsrc/main/java/com/sprintgether/otserver/controller/UserController.java,7/4/74aa00e369318d1b6a8d6f7dfdd9b6a958a67930
-7
-pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
