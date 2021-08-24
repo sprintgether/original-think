@@ -1,12 +1,8 @@
 package com.sprintgether.otserver;
 
-<<<<<<< HEAD
 import com.sprintgether.otserver.exception.MailSendException;
 import com.sprintgether.otserver.model.entity.Mail;
-import com.sprintgether.otserver.model.entity.Role;
-import com.sprintgether.otserver.model.entity.User;
-=======
->>>>>>> 10d6b18e2c66a195513d2e52b18d614452256e1b
+
 import com.sprintgether.otserver.service.MailService;
 import com.sprintgether.otserver.service.core.RoleService;
 import com.sprintgether.otserver.service.core.UserService;
@@ -17,15 +13,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.util.Properties;
+import java.io.IOException;
 
 @SpringBootApplication
 public class OtServerApplication implements CommandLineRunner {
@@ -44,10 +36,7 @@ public class OtServerApplication implements CommandLineRunner {
 	private JavaMailSender javaMailSender;
 
 	@Autowired
-<<<<<<< HEAD
 	@Qualifier("mailServiceImplUseSmtp")
-=======
->>>>>>> 10d6b18e2c66a195513d2e52b18d614452256e1b
 	private MailService mailService;
 
 	public static void main(String[] args) {
@@ -59,7 +48,6 @@ public class OtServerApplication implements CommandLineRunner {
 		LOGGER.debug("Initialiser les rôles dans le système");
 		roleService.initRoles();
 
-<<<<<<< HEAD
 		/*System.out.println("Sending Email...");
 
 		sendEmail();
@@ -68,7 +56,7 @@ public class OtServerApplication implements CommandLineRunner {
 	}
 
 	void sendEmail() {
-		try{
+		try {
 			System.out.println("sending .....");
 
 			Mail mail = Mail.builder()
@@ -79,7 +67,7 @@ public class OtServerApplication implements CommandLineRunner {
 			mailService.send(mail);
 
 			System.out.println("mail envoyé ......");
-		}catch (IOException e){
+		} catch (IOException e) {
 			System.out.println("mail non envoyé ......");
 			LOGGER.error(String.valueOf(e));
 			throw new MailSendException("pe8977461@gmail.com", "Email verification");
@@ -95,11 +83,4 @@ public class OtServerApplication implements CommandLineRunner {
 		javaMailSender.send(msg);
 		System.out.println("mail envoyé ......");*/
 	}
-=======
-		LOGGER.debug("Effectuer un envoi test de mail par SMTP");
-		mailService.deliverWithSmtp();
-		LOGGER.debug("Mail envoyé avec succès!");
-	}
-
->>>>>>> 10d6b18e2c66a195513d2e52b18d614452256e1b
 }
