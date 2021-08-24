@@ -8,6 +8,7 @@ import com.sprintgether.otserver.service.MailService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,7 @@ import java.io.IOException;
 public class OnUserAccountChangeListener  implements ApplicationListener<OnUserAccountChangeEvent> {
 
     @Autowired
+    @Qualifier("mailServiceImplUseSendgrid")
     private MailService mailService;
 
     private final Logger LOGGER = LogManager.getLogger(getClass());

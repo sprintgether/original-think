@@ -9,20 +9,25 @@ import com.sprintgether.otserver.model.entity.Mail;
 import com.sprintgether.otserver.model.enums.EnumMailState;
 import com.sprintgether.otserver.repository.MailRepository;
 import com.sprintgether.otserver.service.MailService;
+import freemarker.template.TemplateException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.time.Instant;
 
-@Service
+@Service("mailServiceImplUseSendgrid")
 @Slf4j
-public class MailServiceImpl implements MailService {
+public class MailServiceImplUseSendgrid implements MailService {
 
-    private static final Logger LOGGER = LogManager.getLogger(MailServiceImpl.class);
+    private static final Logger LOGGER = LogManager.getLogger(MailServiceImplUseSendgrid.class);
 
     @Value("${app.mail.sendgrid.sender}")
     private String sender;
@@ -57,5 +62,10 @@ public class MailServiceImpl implements MailService {
         mail.setState(EnumMailState.SENDED);
         mail.setSendedAt(Instant.now());
         mailRepository.save(mail);
+    }
+
+    @Override
+    public MimeMessageHelper prepareHelper(Mail mail, MimeMessage message) throws IOException, TemplateException, MessagingException {
+        return null;
     }
 }

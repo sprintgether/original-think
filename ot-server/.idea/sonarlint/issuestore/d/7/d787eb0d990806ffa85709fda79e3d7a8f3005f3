@@ -1,8 +1,0 @@
-
-`
-java:S1128"ERemove this unused import 'com.sprintgether.otserver.util.TokenUtil'.( ¡ŸŸşÿÿÿÿ
-d
-java:S1128"BRemove this unused import 'freemarker.template.TemplateException'.(½ÖøØûÿÿÿÿ8¹’ŒÚ±/
-W
-java:S1128":Remove this unused import 'javax.mail.MessagingException'.(ÇîŞ8¹’ŒÚ±/
-k	java:S116("QRename this field "LOGGER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Â±»Ãùÿÿÿÿ

@@ -12,6 +12,7 @@ import com.sprintgether.otserver.util.TokenUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
 import com.sprintgether.otserver.exception.MailSendException;
@@ -30,6 +31,7 @@ public class OnUserRegistrationCompleteListener implements ApplicationListener<O
     private String passwordResetDuration;
 
     @Autowired
+    @Qualifier("mailServiceImplUseSmtp") // @Qualifier("mailServiceImplUseSendgrid")
     private MailService mailService;
 
     @Autowired
@@ -56,17 +58,22 @@ public class OnUserRegistrationCompleteListener implements ApplicationListener<O
 
         String emailConfirmationUrl = onUserRegistrationCompleteEvent.getRedirectUrl()
                 .queryParam("token", token.getValue()).toUriString();
-        /*try{
+        try{
+            System.out.println("sending mail.....");
+
             Mail mail = Mail.builder()
                     .subject("Activation de l'adresse mail")
-                    .to(user.getEmail())
+                    .to(user.getEmail()) //)"pe8977461@gmail.com"
                     .content("Veuillez cliquer sur ce <a href=" + emailConfirmationUrl + ">lien</a> pour vérifier votre adresse email...............")
                     .build();
             mailService.send(mail);
+
+            System.out.println("Done");
         }catch (IOException e){
+            System.out.println("NO send mail .....");
             LOGGER.error(String.valueOf(e));
-            throw new MailSendException(user.getEmail(), "Email verification");
-        }*/
+            throw new MailSendException(user.getEmail(), "Email verification"); //
+        }
     }
 
 

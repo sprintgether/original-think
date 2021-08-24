@@ -93,18 +93,12 @@ v
 Fsrc/main/java/com/sprintgether/otserver/model/enums/EnumMailState.java,f/8/f8f23871ce546423abcf45bf45d8f663ae800019
 r
 Bsrc/main/java/com/sprintgether/otserver/config/SendGridConfig.java,1/f/1fc95da15b2385a069990e6bdc1e387df2d2cf78
-‚
-Rsrc/main/java/com/sprintgether/otserver/event/OnUserRegistrationCompleteEvent.java,7/b/7b081e454e84e63df71e7fbd071a4e1c24b23f6e
 k
 ;src/main/java/com/sprintgether/otserver/util/constants.java,7/6/760ac3069279f3db5419ee1247c1ba6af6415c38
 k
 ;src/main/java/com/sprintgether/otserver/util/TokenUtil.java,0/c/0c2edb3a8f603178b80d5b8e76771d6233163ec3
 v
 Fsrc/main/java/com/sprintgether/otserver/service/core/TokenService.java,0/7/07733650b1efd25e6c1475eb117e4936895ec2d1
-n
->src/main/java/com/sprintgether/otserver/model/entity/Mail.java,3/8/38d61e3d5289e5b0e8517d784fd1f779615fc020
-Ž
-^src/main/java/com/sprintgether/otserver/event/listener/OnUserRegistrationCompleteListener.java,d/7/d787eb0d990806ffa85709fda79e3d7a8f3005f3
 
 Osrc/main/java/com/sprintgether/otserver/service/core/impl/TokenServiceImpl.java,5/3/53df12f17c8e2bf5631ad801931fd359f8eeebf1
 o
@@ -165,8 +159,6 @@ Nsrc/main/java/com/sprintgether/otserver/service/core/impl/RoleServiceImpl.java
 Nsrc/main/java/com/sprintgether/otserver/service/auth/impl/AuthServiceImpl.java,3/e/3ef515b884e5a593e4feee28783fb1289dcc3f26
 u
 Esrc/main/java/com/sprintgether/otserver/service/auth/AuthService.java,4/0/408b98c8c637d7b98e44fdcc4fca30be9c4493d9
-v
-Fsrc/main/java/com/sprintgether/otserver/controller/AuthController.java,4/9/498e49db6cef5cedbab5f6ba778bbfdf81c85f76
 n
 >src/main/java/com/sprintgether/otserver/model/entity/User.java,8/c/8cbe31a8b4145e23de6d15407cc1bf41b1e4b438
 u
@@ -177,5 +169,3 @@ z
 Jsrc/main/java/com/sprintgether/otserver/handlers/RestExceptionHandler.java,2/2/22fc01f3ea25e4abee7667c2e9ed2a5ab74ef212
 n
 >src/main/java/com/sprintgether/otserver/model/dto/UserDto.java,0/7/07d7d1d1429b3992df7babcb176682270e4c17ef
-v
-Fsrc/main/java/com/sprintgether/otserver/controller/UserController.java,7/4/74aa00e369318d1b6a8d6f7dfdd9b6a958a67930
