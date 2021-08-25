@@ -13,13 +13,13 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
+import javax.mail.MessagingException;
 import java.io.IOException;
 
 @Component
 public class OnUserAccountChangeListener  implements ApplicationListener<OnUserAccountChangeEvent> {
 
     @Autowired
-    @Qualifier("mailServiceImplUseSendgrid")
     private MailService mailService;
 
     private final Logger LOGGER = LogManager.getLogger(getClass());
@@ -45,8 +45,8 @@ public class OnUserAccountChangeListener  implements ApplicationListener<OnUserA
                     .to(user.getEmail())
                     .content("Mot de passe modifié avec succèss")
                     .build();
-            mailService.send(mail);
-        }catch (IOException e){
+            mailService.deliverWithSmtp(mail);
+        }catch (MessagingException e){
             LOGGER.error(String.valueOf(e));
             throw new MailSendException(user.getEmail(), "Your password has been changed");
         }

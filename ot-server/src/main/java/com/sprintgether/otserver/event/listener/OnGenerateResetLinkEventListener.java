@@ -20,7 +20,6 @@ import java.io.IOException;
 public class OnGenerateResetLinkEventListener implements ApplicationListener<OnGenerateResetLinkEvent> {
 
     @Autowired
-    @Qualifier("mailServiceImplUseSendgrid")
     private MailService mailService;
 
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());

@@ -65,7 +65,7 @@ app:
       host: smtp.gmail.com
       username: sprintgether@gmail.com
       password: "*SprintTeam@2021"
-      port: 587
+      port: "587"
       auth: true
       start-tls-enable: true
 

@@ -19,6 +19,7 @@ import com.sprintgether.otserver.exception.MailSendException;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
+import javax.mail.MessagingException;
 import java.io.IOException;
 
 @Component
@@ -31,7 +32,6 @@ public class OnUserRegistrationCompleteListener implements ApplicationListener<O
     private String passwordResetDuration;
 
     @Autowired
-    @Qualifier("mailServiceImplUseSmtp") // @Qualifier("mailServiceImplUseSendgrid")
     private MailService mailService;
 
     @Autowired
@@ -66,24 +66,14 @@ public class OnUserRegistrationCompleteListener implements ApplicationListener<O
                     .to(user.getEmail()) //)"pe8977461@gmail.com"
                     .content("Veuillez cliquer sur ce <a href=" + emailConfirmationUrl + ">lien</a> pour vérifier votre adresse email...............")
                     .build();
-            mailService.send(mail);
+            mailService.deliverWithSmtp(mail);
 
             System.out.println("Done");
-        }catch (IOException e){
+        }catch (MessagingException e){
             System.out.println("NO send mail .....");
             LOGGER.error(String.valueOf(e));
             throw new MailSendException(user.getEmail(), "Email verification"); //
         }
     }
-
-
-
-
-
-
-
-
-
-
 
 }

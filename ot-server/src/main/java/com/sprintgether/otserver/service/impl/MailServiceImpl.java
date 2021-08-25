@@ -13,16 +13,17 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-import javax.mail.MessagingException;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
+import java.util.Properties;
 
 @Service
 public class MailServiceImpl implements MailService {
@@ -31,6 +32,24 @@ public class MailServiceImpl implements MailService {
 
     @Value("${app.mail.sendgrid.sender}")
     private String sender;
+
+    @Value("${app.mail.smtp.host}")
+    private String host;
+
+    @Value("${app.mail.smtp.username}")
+    private String username;
+
+    @Value("${app.mail.smtp.password}")
+    private String password;
+
+    @Value("${app.mail.smtp.port}")
+    private String port;
+
+    @Value("${app.mail.smtp.auth}")
+    private boolean auth;
+
+    @Value("${app.mail.smtp.start-tls-enable}")
+    private boolean startTlsEnable;
 
     @Autowired
     private MailRepository mailRepository;
@@ -80,12 +99,26 @@ public class MailServiceImpl implements MailService {
 
     @Override
     public void deliverWithSmtp(Mail mail) throws MessagingException {
-        SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo(mail.getTo());
 
-        msg.setSubject(mail.getSubject());
-        msg.setText(mail.getContent());
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", auth);
+        props.put("mail.smtp.starttls.enable", startTlsEnable);
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", port);
 
-        javaMailSender.send(msg);
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress(username));
+        message.setRecipients(Message.RecipientType.TO,
+                InternetAddress.parse(mail.getTo()));
+        message.setSubject(mail.getSubject());
+        message.setContent(mail.getContent(), "text/html;charset=utf-8");
+        Transport.send(message);
     }
 }

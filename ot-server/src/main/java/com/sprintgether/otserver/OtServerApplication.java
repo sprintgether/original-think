@@ -33,7 +33,6 @@ public class OtServerApplication implements CommandLineRunner {
 	private JavaMailSender javaMailSender;
 
 	@Autowired
-	@Qualifier("mailServiceImplUseSmtp")
 	private MailService mailService;
 
 	public static void main(String[] args) {
