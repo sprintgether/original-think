@@ -50,7 +50,8 @@
 
 /ot-server/HELP.md
 /ot-server/target/
-/ot-server/.idea
+/ot-server/.idea/
 /ot-server/!.mvn/wrapper/maven-wrapper.jar
 /ot-server/!**/src/main/**/target/
 /ot-server/!**/src/test/**/target/
+.gitsecret/keys/random_seed

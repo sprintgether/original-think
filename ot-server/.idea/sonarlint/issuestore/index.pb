@@ -177,3 +177,13 @@ n
 >src/main/java/com/sprintgether/otserver/model/dto/UserDto.java,0/7/07d7d1d1429b3992df7babcb176682270e4c17ef
 v
 Fsrc/main/java/com/sprintgether/otserver/controller/UserController.java,7/4/74aa00e369318d1b6a8d6f7dfdd9b6a958a67930
+r
+Bsrc/main/java/com/sprintgether/otserver/config/SendGridConfig.java,1/f/1fc95da15b2385a069990e6bdc1e387df2d2cf78
+7
+pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
+p
+@src/main/java/com/sprintgether/otserver/OtServerApplication.java,6/3/6338c7dbc372b72745ecb9df0085a87cff1d7a2e
+p
+@src/main/java/com/sprintgether/otserver/service/MailService.java,b/5/b5bf2a0660979d5ea6c7a0d544d195e323b53e1d
+y
+Isrc/main/java/com/sprintgether/otserver/service/impl/MailServiceImpl.java,7/d/7d9ac44ab456b93d258433ff007bd4513427a9c9
