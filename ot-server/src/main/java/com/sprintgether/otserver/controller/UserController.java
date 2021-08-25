@@ -50,4 +50,6 @@ public class UserController {
 
         return new RestResponse("Password changed successfully", ResponseStatus.SUCCESS, 200);
     }
+
+
 }

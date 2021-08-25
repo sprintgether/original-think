@@ -37,6 +37,9 @@ public abstract class Article extends MainEntity {
      @OneToOne(targetEntity = File.class)
      protected File cover;
 
+     @ManyToOne(targetEntity = User.class)
+     protected User creator;
+
      @Enumerated(EnumType.STRING)
      protected EnumVisibility visibility;
 
