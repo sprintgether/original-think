@@ -1,5 +1,7 @@
 package com.sprintgether.otserver.service.impl;
 
+import com.sprintgether.otserver.model.entity.File;
+import com.sprintgether.otserver.repository.FileRepository;
 import com.sprintgether.otserver.service.FileService;
 import com.sprintgether.otserver.service.core.UserService;
 import org.apache.logging.log4j.LogManager;
@@ -27,6 +29,13 @@ public class FileServiceImpl implements FileService {
     @Autowired
     private FileService fileService;
 
+    @Autowired
+    private FileRepository fileRepository;
+
+    @Override
+    public File save(File file) {
+        return fileRepository.save(file);
+    }
 
     @Override
     public String store(MultipartFile file, String uuid) throws IOException {

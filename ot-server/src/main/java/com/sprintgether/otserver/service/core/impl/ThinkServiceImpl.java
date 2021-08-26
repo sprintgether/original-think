@@ -63,14 +63,16 @@ public class ThinkServiceImpl implements ThinkService {
 
         String documentUuid = fileService.store(document, TokenUtil.generateRandomUuid() + "" + extension); // Upload du fichier
 
-        File currentFile = new File();
+        File pdfFile = new File();
         // Création des méta données sur le fichier
-        currentFile.setName(document.getOriginalFilename().toLowerCase());
-        currentFile.setUrl(documentUuid);
-        currentFile.setMimeType(mimeType);
-        currentFile.setExtension(extension);
+        pdfFile.setName(document.getOriginalFilename().toLowerCase());
+        pdfFile.setUrl(documentUuid);
+        pdfFile.setMimeType(mimeType);
+        pdfFile.setExtension(extension);
+        File savedFile = fileService.save(pdfFile);
 
-        think.setDocument(currentFile);
+        think.setDocument(savedFile);
+
         // mettre les autres infos sur le THINK
         think.setJournal(thinkDto.getJournal());
         think.setTheme(thinkDto.getTheme());
