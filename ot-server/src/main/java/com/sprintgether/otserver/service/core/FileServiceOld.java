@@ -6,7 +6,7 @@ import com.sprintgether.otserver.model.dto.FileDto;
 
 import java.util.List;
 
-public interface FileService {
+public interface FileServiceOld {
     FileDto save(FileDto fileDto);
 
     FileDto findById(String id);

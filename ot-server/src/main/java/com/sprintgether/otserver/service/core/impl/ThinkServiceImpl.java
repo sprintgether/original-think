@@ -1,19 +1,29 @@
 package com.sprintgether.otserver.service.core.impl;
 
+import com.sprintgether.otserver.annotation.CurrentUser;
 import com.sprintgether.otserver.exception.EnumErrorCode;
 import com.sprintgether.otserver.exception.InvalidEntityException;
+import com.sprintgether.otserver.exception.OtDBItemNotFoundException;
 import com.sprintgether.otserver.model.dto.ThinkDto;
+import com.sprintgether.otserver.model.dto.UserDto;
 import com.sprintgether.otserver.model.entity.File;
 import com.sprintgether.otserver.model.entity.Think;
+import com.sprintgether.otserver.model.enums.ResponseStatus;
+import com.sprintgether.otserver.model.payload.RestResponse;
 import com.sprintgether.otserver.repository.ThinkRepository;
 import com.sprintgether.otserver.service.FileService;
 import com.sprintgether.otserver.service.core.ThinkService;
+import com.sprintgether.otserver.service.core.UserService;
+import org.apache.commons.io.FilenameUtils;
 import com.sprintgether.otserver.util.TokenUtil;
 import com.sprintgether.otserver.validator.ThinkValidator;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -25,11 +35,16 @@ import java.util.stream.Collectors;
 @Slf4j
 public class ThinkServiceImpl implements ThinkService {
 
+    private static final Logger LOGGER = LogManager.getLogger(ThinkServiceImpl.class);
+
     @Autowired
     private ThinkRepository thinkRepository;
 
     @Autowired
     private FileService fileService;
+
+    @Autowired
+    private UserService userService;
 
     @Override
     public ThinkDto save(Think think) {
@@ -37,22 +52,37 @@ public class ThinkServiceImpl implements ThinkService {
     }
 
     @Override
-    public ThinkDto createThink(String creatorId, MultipartFile document, ThinkDto thinkDto) throws IOException {
-
+    public ThinkDto createThink(String creatorId, MultipartFile document, ThinkDto thinkDto) throws IOException, OtDBItemNotFoundException {
         Think think = new Think();
 
-        String documentExtension = ".pdf";
-        String documentUuid = fileService.store(document, TokenUtil.generateRandomUuid() + "" + documentExtension);
+        LOGGER.debug("obtenir le type du fichier");
+        String mimeType = document.getContentType();
 
-        File pdfFile = new File();
-        pdfFile.setName("");
-        pdfFile.setExtension("");
-        pdfFile.setUrl(documentUuid);
+        LOGGER.debug("obtenir l'extention du fichier");
+        String extension = FilenameUtils.getExtension(document.getOriginalFilename()).toLowerCase();
 
-        think.setDocument(pdfFile);
-        think.setJournal("");
+        String documentUuid = fileService.store(document, TokenUtil.generateRandomUuid() + "" + extension); // Upload du fichier
 
-        // TODO
+        File currentFile = new File();
+        // Création des méta données sur le fichier
+        currentFile.setName(document.getOriginalFilename().toLowerCase());
+        currentFile.setUrl(documentUuid);
+        currentFile.setMimeType(mimeType);
+        currentFile.setExtension(extension);
+
+        think.setDocument(currentFile);
+        // mettre les autres infos sur le THINK
+        think.setJournal(thinkDto.getJournal());
+        think.setTheme(thinkDto.getTheme());
+        think.setDomain(thinkDto.getDomain());
+        think.setDescription(thinkDto.getDescription());
+        think.setAbstracts(thinkDto.getAbstracts());
+        think.setIsPublished(thinkDto.getIsPublished());
+        think.setPublishedAt(thinkDto.getPublishedAt());
+
+        //
+        think.setCreator(userService.findById(creatorId));
+
         return save(think);
     }
 

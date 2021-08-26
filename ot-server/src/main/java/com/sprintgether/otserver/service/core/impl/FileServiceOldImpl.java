@@ -5,7 +5,7 @@ import com.sprintgether.otserver.exception.InvalidEntityException;
 import com.sprintgether.otserver.model.dto.FileDto;
 import com.sprintgether.otserver.model.entity.File;
 import com.sprintgether.otserver.repository.FileRepository;
-import com.sprintgether.otserver.service.core.FileService;
+import com.sprintgether.otserver.service.core.FileServiceOld;
 import com.sprintgether.otserver.validator.FileValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,10 +17,10 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-public class FileServiceImpl implements FileService {
+public class FileServiceOldImpl implements FileServiceOld {
     FileRepository fileRepository;
 
-    public FileServiceImpl(FileRepository fileRepository) {
+    public FileServiceOldImpl(FileRepository fileRepository) {
         this.fileRepository = fileRepository;
     }
 

@@ -1,6 +1,7 @@
 package com.sprintgether.otserver.controller;
 
 import com.sprintgether.otserver.annotation.CurrentUser;
+import com.sprintgether.otserver.exception.OtDBItemNotFoundException;
 import com.sprintgether.otserver.model.dto.ThinkDto;
 import com.sprintgether.otserver.model.enums.ResponseStatus;
 import com.sprintgether.otserver.model.payload.RestResponse;
@@ -25,7 +26,7 @@ public class ArticleController {
     @PostMapping("/think")
     public RestResponse createThink(@CurrentUser CustomUserDetails customUserDetails,
                                     @RequestPart("document") MultipartFile document,
-                                    @Required @RequestPart("think") ThinkDto thinkDto) throws IOException {
+                                    @Required @RequestPart("think") ThinkDto thinkDto) throws IOException, OtDBItemNotFoundException {
         return new RestResponse(thinkService.createThink(customUserDetails.getId(), document, thinkDto), "Think crée avec succès", ResponseStatus.SUCCESS, 200);
     }
 }

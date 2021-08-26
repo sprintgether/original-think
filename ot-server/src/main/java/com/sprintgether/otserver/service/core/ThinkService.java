@@ -1,5 +1,6 @@
 package com.sprintgether.otserver.service.core;
 
+import com.sprintgether.otserver.exception.OtDBItemNotFoundException;
 import com.sprintgether.otserver.model.dto.ThinkDto;
 import com.sprintgether.otserver.model.entity.Think;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,5 +22,5 @@ public interface ThinkService {
 
     void delete(String id);
 
-    ThinkDto createThink(String creatorId, MultipartFile document, ThinkDto thinkDto) throws IOException;
+    ThinkDto createThink(String creatorId, MultipartFile document, ThinkDto thinkDto) throws IOException, OtDBItemNotFoundException;
 }
