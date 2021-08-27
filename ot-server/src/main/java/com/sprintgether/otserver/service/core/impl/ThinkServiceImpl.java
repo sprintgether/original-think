@@ -1,17 +1,13 @@
 package com.sprintgether.otserver.service.core.impl;
 
-import com.sprintgether.otserver.annotation.CurrentUser;
 import com.sprintgether.otserver.exception.EnumErrorCode;
 import com.sprintgether.otserver.exception.InvalidEntityException;
 import com.sprintgether.otserver.exception.OtDBItemNotFoundException;
 import com.sprintgether.otserver.model.dto.ThinkDto;
-import com.sprintgether.otserver.model.dto.UserDto;
 import com.sprintgether.otserver.model.entity.File;
 import com.sprintgether.otserver.model.entity.Think;
-import com.sprintgether.otserver.model.enums.ResponseStatus;
-import com.sprintgether.otserver.model.payload.RestResponse;
 import com.sprintgether.otserver.repository.ThinkRepository;
-import com.sprintgether.otserver.service.FileService;
+import com.sprintgether.otserver.service.core.FileService;
 import com.sprintgether.otserver.service.core.ThinkService;
 import com.sprintgether.otserver.service.core.UserService;
 import org.apache.commons.io.FilenameUtils;
@@ -23,7 +19,6 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -46,22 +41,15 @@ public class ThinkServiceImpl implements ThinkService {
     @Autowired
     private UserService userService;
 
-    @Override
-    public ThinkDto save(Think think) {
-        return ThinkDto.fromEntity(thinkRepository.save(think));
-    }
 
-    @Override
-    public ThinkDto createThink(String creatorId, MultipartFile document, ThinkDto thinkDto) throws IOException, OtDBItemNotFoundException {
-        Think think = new Think();
-
+    private File saveDocument(MultipartFile document) throws IOException {
         LOGGER.debug("obtenir le type du fichier");
         String mimeType = document.getContentType();
 
         LOGGER.debug("obtenir l'extention du fichier");
         String extension = FilenameUtils.getExtension(document.getOriginalFilename()).toLowerCase();
 
-        String documentUuid = fileService.store(document, TokenUtil.generateRandomUuid() + "" + extension); // Upload du fichier
+        String documentUuid = fileService.store(document, TokenUtil.generateRandomUuid() + "." + extension); // Upload du fichier
 
         File pdfFile = new File();
         // Création des méta données sur le fichier
@@ -71,7 +59,43 @@ public class ThinkServiceImpl implements ThinkService {
         pdfFile.setExtension(extension);
         File savedFile = fileService.save(pdfFile);
 
+        return pdfFile;
+    }
+
+    private File saveCover(MultipartFile cover) throws IOException {
+        LOGGER.debug("obtenir le type du fichier");
+        String mimeType = cover.getContentType();
+
+        LOGGER.debug("obtenir l'extention du fichier");
+        String extension = FilenameUtils.getExtension(cover.getOriginalFilename()).toLowerCase();
+
+        String coverUuid = fileService.store(cover, TokenUtil.generateRandomUuid() + "." + extension); // Upload du fichier
+
+        File imageFile = new File();
+        // Création des méta données sur le fichier
+        imageFile.setName(cover.getOriginalFilename().toLowerCase());
+        imageFile.setUrl(coverUuid);
+        imageFile.setMimeType(mimeType);
+        imageFile.setExtension(extension);
+        File savedCover = fileService.save(imageFile);
+
+        return imageFile;
+    }
+
+    @Override
+    public ThinkDto save(Think think) {
+        return ThinkDto.fromEntity(thinkRepository.save(think));
+    }
+
+    @Override
+    public ThinkDto createThink(String creatorId, MultipartFile document, MultipartFile cover, ThinkDto thinkDto) throws IOException, OtDBItemNotFoundException {
+        Think think = new Think();
+
+        File savedFile = saveDocument(document);
+        File savedCover = saveCover(cover);
+
         think.setDocument(savedFile);
+        think.setCover(savedCover);
 
         // mettre les autres infos sur le THINK
         think.setJournal(thinkDto.getJournal());
@@ -86,58 +110,6 @@ public class ThinkServiceImpl implements ThinkService {
         think.setCreator(userService.findById(creatorId));
 
         return save(think);
-    }
-
-    @Override
-    public ThinkDto save(ThinkDto dto) {
-        List<String> errors = ThinkValidator.validate(dto);
-        if (!errors.isEmpty()) {
-            log.error("Think is not VALID", dto);
-            throw new InvalidEntityException("l'entité Think n'est pas valide", EnumErrorCode.ERROR_DB_ITEM_NOTFOUND, errors);
-        }
-        return ThinkDto.fromEntity(
-                thinkRepository.save(
-                        ThinkDto.toEntity(dto)
-                )
-        );
-    }
-
-    @Override
-    public ThinkDto findById(String id) {
-        if(!StringUtils.hasLength(id)){
-            log.error("User ID is null");
-        }
-
-        Optional<Think> think = thinkRepository.findById(id);
-        return Optional.of(ThinkDto.fromEntity(think.get())).orElseThrow(()
-                -> new InvalidEntityException("Aucun Think avec l'ID "  + id + "n'a été trouvé", EnumErrorCode.ERROR_DB_ITEM_NOTFOUND) );
-    }
-
-    @Override
-    public ThinkDto findByJournal(String journal) {
-        if(!StringUtils.hasLength(journal)){
-            log.error("THINK journal is null");
-        }
-
-        Optional<Think> think = thinkRepository.findThinkByJournal(journal);
-        return Optional.of(ThinkDto.fromEntity(think.get())).orElseThrow(()
-                -> new InvalidEntityException("Aucun Think avec le nom "  + think + "n'a été trouvé", EnumErrorCode.ERROR_DB_ITEM_NOTFOUND) );
-    }
-
-    @Override
-    public List<ThinkDto> findAll() {
-        return thinkRepository.findAll().stream()
-                .map(ThinkDto::fromEntity)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public void delete(String id) {
-        if(id == null){
-            log.error("THINK ID is null");
-            return;
-        }
-        thinkRepository.deleteById(id);
     }
 
 }

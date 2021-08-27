@@ -21,11 +21,5 @@ x
 Hsrc/main/java/com/sprintgether/otserver/model/enums/EnumJournalType.java,c/f/cf57e6c165ce217a39c065ecc7a29d4ede25c9d4
 v
 Fsrc/main/java/com/sprintgether/otserver/controller/UserController.java,7/4/74aa00e369318d1b6a8d6f7dfdd9b6a958a67930
-o
-?src/main/java/com/sprintgether/otserver/model/entity/Think.java,4/a/4a42419d108825e0ae880235b9424d3a30a22670
-n
->src/main/java/com/sprintgether/otserver/model/entity/File.java,6/f/6f1a8e93663e80497f9f969374ff03c84bbb0bfe
-o
-?src/main/java/com/sprintgether/otserver/model/dto/ThinkDto.java,c/3/c3a8f2f709b553b4ebdfa8e0dc1b3f526bfe9a45
 k
 ;src/main/java/com/sprintgether/otserver/util/TokenUtil.java,0/c/0c2edb3a8f603178b80d5b8e76771d6233163ec3

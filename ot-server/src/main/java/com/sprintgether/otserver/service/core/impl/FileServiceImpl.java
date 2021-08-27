@@ -1,9 +1,8 @@
-package com.sprintgether.otserver.service.impl;
+package com.sprintgether.otserver.service.core.impl;
 
 import com.sprintgether.otserver.model.entity.File;
 import com.sprintgether.otserver.repository.FileRepository;
-import com.sprintgether.otserver.service.FileService;
-import com.sprintgether.otserver.service.core.UserService;
+import com.sprintgether.otserver.service.core.FileService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

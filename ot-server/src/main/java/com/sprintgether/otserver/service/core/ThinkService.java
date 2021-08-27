@@ -12,15 +12,5 @@ public interface ThinkService {
 
     ThinkDto save(Think think);
 
-    ThinkDto save(ThinkDto thinkDto);
-
-    ThinkDto findById(String id);
-
-    ThinkDto findByJournal(String journal);
-
-    List<ThinkDto> findAll();
-
-    void delete(String id);
-
-    ThinkDto createThink(String creatorId, MultipartFile document, ThinkDto thinkDto) throws IOException, OtDBItemNotFoundException;
+    ThinkDto createThink(String creatorId, MultipartFile document, MultipartFile cover, ThinkDto thinkDto) throws IOException, OtDBItemNotFoundException;
 }

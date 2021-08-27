@@ -26,7 +26,8 @@ public class ArticleController {
     @PostMapping("/think")
     public RestResponse createThink(@CurrentUser CustomUserDetails customUserDetails,
                                     @RequestPart("document") MultipartFile document,
+                                    @RequestPart("cover") MultipartFile cover,
                                     @Required @RequestPart("think") ThinkDto thinkDto) throws IOException, OtDBItemNotFoundException {
-        return new RestResponse(thinkService.createThink(customUserDetails.getId(), document, thinkDto), "Think crée avec succès", ResponseStatus.SUCCESS, 200);
+        return new RestResponse(thinkService.createThink(customUserDetails.getId(), document, cover, thinkDto), "Think crée avec succès", ResponseStatus.SUCCESS, 200);
     }
 }

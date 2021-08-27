@@ -1,4 +1,4 @@
-package com.sprintgether.otserver.service;
+package com.sprintgether.otserver.service.core;
 
 import com.sprintgether.otserver.model.entity.File;
 import org.springframework.core.io.Resource;
