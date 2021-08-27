@@ -62,26 +62,6 @@ public class ThinkServiceImpl implements ThinkService {
         return pdfFile;
     }
 
-    private File saveCover(MultipartFile cover) throws IOException {
-        LOGGER.debug("obtenir le type du fichier");
-        String mimeType = cover.getContentType();
-
-        LOGGER.debug("obtenir l'extention du fichier");
-        String extension = FilenameUtils.getExtension(cover.getOriginalFilename()).toLowerCase();
-
-        String coverUuid = fileService.store(cover, TokenUtil.generateRandomUuid() + "." + extension); // Upload du fichier
-
-        File imageFile = new File();
-        // Création des méta données sur le fichier
-        imageFile.setName(cover.getOriginalFilename().toLowerCase());
-        imageFile.setUrl(coverUuid);
-        imageFile.setMimeType(mimeType);
-        imageFile.setExtension(extension);
-        File savedCover = fileService.save(imageFile);
-
-        return imageFile;
-    }
-
     @Override
     public ThinkDto save(Think think) {
         return ThinkDto.fromEntity(thinkRepository.save(think));
@@ -92,7 +72,7 @@ public class ThinkServiceImpl implements ThinkService {
         Think think = new Think();
 
         File savedFile = saveDocument(document);
-        File savedCover = saveCover(cover);
+        File savedCover = saveDocument(cover);
 
         think.setDocument(savedFile);
         think.setCover(savedCover);
