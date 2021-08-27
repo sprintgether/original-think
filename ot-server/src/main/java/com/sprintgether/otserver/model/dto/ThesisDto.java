@@ -10,6 +10,11 @@ public class ThesisDto {
     private String documentLink;
     private String grade;
 
+    protected String theme;
+    protected String domain;
+    protected String description;
+    protected String abstracts;
+
     public static ThesisDto fromEntity(Thesis thesis){
         if (thesis == null){
             return null;
@@ -18,6 +23,10 @@ public class ThesisDto {
         return ThesisDto.builder()
                 .documentLink(thesis.getDocumentLink())
                 .grade(thesis.getGrade())
+                .theme(thesis.getTheme())
+                .domain(thesis.getDomain())
+                .description(thesis.getDescription())
+                .abstracts(thesis.getAbstracts())
                 .build();
     }
 
@@ -29,6 +38,10 @@ public class ThesisDto {
         Thesis thesis = new Thesis();
         thesis.setDocumentLink(thesisDto.getDocumentLink());
         thesis.setGrade(thesisDto.getGrade());
+        thesis.setTheme(thesisDto.getTheme());
+        thesis.setDomain(thesisDto.getDomain());
+        thesis.setDescription(thesis.getDescription());
+        thesis.setAbstracts(thesis.getAbstracts());
 
         return thesis;
     }

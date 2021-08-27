@@ -23,6 +23,7 @@ public class Talk extends Article{
 
     private String studyLevel;
 
+
     @JsonIgnore
     @OneToMany(mappedBy = "talk")
     private List<Author> authors;

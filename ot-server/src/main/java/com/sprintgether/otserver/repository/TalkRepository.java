@@ -10,5 +10,4 @@ import java.util.Optional;
 
 @Repository
 public interface TalkRepository extends JpaRepository<Talk, String> {
-    Optional<Talk> findTalkByStudyLevel(String studyLevel);
 }

@@ -1,17 +1,15 @@
 package com.sprintgether.otserver.service.core;
 
+import com.sprintgether.otserver.exception.OtDBItemNotFoundException;
 import com.sprintgether.otserver.model.dto.TalkDto;
+import com.sprintgether.otserver.model.entity.Talk;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 public interface TalkService {
-    TalkDto save(TalkDto talkDto);
+    TalkDto save(Talk talk);
 
-    TalkDto findById(String id);
-
-    TalkDto findByStudyLevel(String studyLevel);
-
-    List<TalkDto> findAll();
-
-    void delete(String id);
+    Object createTalk(String creatorId, MultipartFile document, MultipartFile cover, TalkDto talkDto) throws OtDBItemNotFoundException;
 }
