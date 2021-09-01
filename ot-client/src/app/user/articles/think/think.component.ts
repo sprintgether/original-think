@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, isDevMode, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { requiredFileType } from 'src/app/_helper/upload-file.validator';
 import { Think } from 'src/app/_model/think.model';
 import { ArticleService } from 'src/app/_service/article.service.';
 import { TokenStorageService } from 'src/app/_service/token-storage.service';
@@ -11,85 +12,67 @@ import { TokenStorageService } from 'src/app/_service/token-storage.service';
 })
 export class ThinkComponent implements OnInit {
 
-  document : File;
+  document: File;
   cover: File;
+  think: Think;
 
-  //Gestion du formulaire
   thinkForm: FormGroup;
-  thinkLoading = false;
-  thinkSubmitted = false;
-  thinkError = false;
-  thinkMessage: string;
-  thinkSuccess = false;
 
-  customUserDetails = null;
+  constructor(
+    private articleService: ArticleService,
+    private tokenStorage: TokenStorageService,
+    private fb: FormBuilder) { }
 
-  thinkDto : Think;
-
-
-  constructor(private articleService: ArticleService, private tokenStorage: TokenStorageService, private fb: FormBuilder) { }
   ngOnInit(): void {
-    this.customUserDetails = this.tokenStorage.getAccessToken();
 
     this.thinkForm = this.fb.group({
-      document:[''],
-      cover: [''],
-      journal:[''],
-      theme: [''],
+      theme: ['', [Validators.required]],
+      domain: [''],
       description: [''],
-      domain:[''],
-      abstract:['']
+      abstracts: [''],
+      journal: [''],
+
+      document: ['', [Validators.required, requiredFileType(['png', 'jpg', 'pdf', 'docx', 'jpeg', 'xls', 'xlxs'])]],
+      cover: ['', [Validators.required, requiredFileType(['png', 'jpg', 'jpeg'])]],
     });
   }
 
-   // Access rapide au formulaire
-   get f() { return this.thinkForm.controls; }
- 
+  get f() { return this.thinkForm.controls; }
 
 
+  onThinkSubmit() {
 
-  onThinkSubmit(){
-      this.thinkDto = {
-      journal : this.f.journal.value,
-      theme : this.f.theme.value,
-      domain : this.f.domain.value,
-      description : this.f.description.value,
-      abstract : this.f.abstract.value
-    } 
+    let newThink = new Think()
+    newThink.theme =  this.f.theme.value
+    newThink.domain = this.f.domain.value
+    newThink.description = this.f.description.value
+    newThink.abstracts = this.f.abstracts.value
+    newThink.journal = this.f.journal.value
 
-    /*console.log("this.thinkDto");
-    console.log(this.thinkDto);
-    console.log("journal = " + this.f.journal.value) // this.thinkForm.get('journal').value);
-    console.log("theme = " + this.f.theme.value);
-    console.log("customUserDetails = " + this.customUserDetails);
-    console.log("-----------------this.document-----------------");
-    console.log(this.document);
-    console.log(this.f.document.value);
-    console.log("-----------------this.cover-----------------"); 
-    console.log(this.cover); 
-    console.log(this.f.cover.value); */
+    this.think = newThink
+    if(isDevMode)
+      console.log(this.think)
+      console.log(this.document)
+      console.log(this.cover)
 
- 
-
-    this.articleService.createThink(this.f.document.value, this.f.cover.value, this.thinkDto).subscribe( 
+    this.articleService.createThink(this.f.document.value, this.f.cover.value, this.think)
+    .subscribe(
       (response) => {
-          console.log("---response---");
+        if(isDevMode)
           console.log(response);
       },
       (error) => {
-        console.log("---------------------------------error---------------------------------")
         console.log(error)
-        console.log("---------------------------------error---------------------------------")
       }
     );
   }
 
-onDocumentChanged(event: any): void {
-    this.document =  event.target.files;
-}
+  onDocumentChanged(event: any): void {
+    // TODO
+  }
 
-onCoverChanged(event: any): void {
-  this.cover = event.target.files;
-}
+  onCoverChanged(event: any): void {
+    // TODO
+  }
 
 }

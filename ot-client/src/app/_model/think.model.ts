@@ -1,8 +1,10 @@
-export class Think{
-    constructor(public journal?: String,
-        public theme?: String,
-        public domain?: String,
-        public description?: String,
-        public abstract?: String,
-    ) {}
+import { Article } from "./article.model";
+
+export class Think extends Article {
+    constructor(
+        public documentLink?: string,
+        public journal?: string,
+    ) {
+        super();
+    }
 }

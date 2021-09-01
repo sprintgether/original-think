@@ -13,7 +13,15 @@ export class ArticleService {
     
     constructor(private http: HttpClient){}
 
-    createThink(document: File, cover: File, think: Think ): Observable<HttpEvent<{}>> { 
+
+    /**
+     * Création d'un article de type Think
+     * @param document 
+     * @param cover 
+     * @param think 
+     * @returns 
+     */
+    createThink(document: File, cover: File, think: Think): Observable<HttpEvent<{}>> { 
         const formData : FormData = new FormData();
         formData.append('document', document);
         formData.append('cover', cover);
