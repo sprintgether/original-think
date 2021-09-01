@@ -5,11 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 
 
 @NgModule({
-  declarations: [FooterComponent],
+  declarations: [FooterComponent, FileUploadComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -21,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 ],
   exports: [
     FooterComponent,
+    FileUploadComponent,
     HttpClientModule,
     //AngularFontAwesomeModule,
     ReactiveFormsModule,

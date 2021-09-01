@@ -3,7 +3,7 @@ server:
 spring:
   datasource:
     jdbc-url: jdbc:h2:mem:original_think_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false
-    username: sauser
+    username: sa
     password:
     driverClassName: org.h2.Driver
   jpa:

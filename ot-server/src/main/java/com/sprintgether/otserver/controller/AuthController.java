@@ -75,7 +75,7 @@ public class AuthController {
         OnUserRegistrationCompleteEvent onUserRegistrationCompleteEvent =
                 new OnUserRegistrationCompleteEvent(registeredUser, urlBuilder);
 
-         applicationEventPublisher.publishEvent(onUserRegistrationCompleteEvent);
+         //applicationEventPublisher.publishEvent(onUserRegistrationCompleteEvent);
         return new RestResponse("Enregistrement effectuée avec succès. Veuillez consulter votre boîte de messagerie pour vérifier votre adresse mail.", ResponseStatus.SUCCESS, 200);
     }
 

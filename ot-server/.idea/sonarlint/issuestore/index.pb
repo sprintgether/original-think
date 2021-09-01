@@ -11,15 +11,11 @@ p
 \src/main/java/com/sprintgether/otserver/event/listener/OnGenerateResetLinkEventListener.java,d/2/d2f0141788fc147ad10d797024dc7d25db99a73e
 ‡
 Wsrc/main/java/com/sprintgether/otserver/event/listener/OnUserAccountChangeListener.java,6/a/6acaf2da91c2a383edee04ab41fc210e7c05f1c5
-Ž
-^src/main/java/com/sprintgether/otserver/event/listener/OnUserRegistrationCompleteListener.java,d/7/d787eb0d990806ffa85709fda79e3d7a8f3005f3
 y
 Isrc/main/java/com/sprintgether/otserver/service/impl/MailServiceImpl.java,7/d/7d9ac44ab456b93d258433ff007bd4513427a9c9
 }
 Msrc/test/java/com/sprintgether/otserver/service/impl/MailServiceImplTest.java,7/4/740fb3b0bbe86c96274cc29f60c845be1b310577
 x
 Hsrc/main/java/com/sprintgether/otserver/model/enums/EnumJournalType.java,c/f/cf57e6c165ce217a39c065ecc7a29d4ede25c9d4
-v
-Fsrc/main/java/com/sprintgether/otserver/controller/UserController.java,7/4/74aa00e369318d1b6a8d6f7dfdd9b6a958a67930
 k
 ;src/main/java/com/sprintgether/otserver/util/TokenUtil.java,0/c/0c2edb3a8f603178b80d5b8e76771d6233163ec3

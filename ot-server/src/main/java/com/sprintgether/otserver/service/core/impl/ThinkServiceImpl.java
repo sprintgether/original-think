@@ -57,6 +57,9 @@ public class ThinkServiceImpl implements ThinkService {
 
     @Override
     public ThinkDto save(Think think) {
+        LOGGER.info("--------------------think---------------------");
+        LOGGER.info(think);
+        LOGGER.info("--------------------think---------------------");
         return ThinkDto.fromEntity(thinkRepository.save(think));
     }
 
