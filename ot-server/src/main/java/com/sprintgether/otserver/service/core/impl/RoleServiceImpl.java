@@ -1,25 +1,22 @@
 package com.sprintgether.otserver.service.core.impl;
 
 import com.sprintgether.otserver.exception.EnumErrorCode;
-import com.sprintgether.otserver.exception.InvalidEntityException;
-import com.sprintgether.otserver.exception.OtDBItemInvalidException;
 import com.sprintgether.otserver.exception.OtDBItemNotFoundException;
-import com.sprintgether.otserver.model.dto.RoleDto;
 import com.sprintgether.otserver.model.entity.Role;
 import com.sprintgether.otserver.repository.RoleRepository;
 import com.sprintgether.otserver.service.core.RoleService;
-import com.sprintgether.otserver.validator.RoleValidator;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
 public class RoleServiceImpl implements RoleService {
+    private static final Logger LOGGER = LogManager.getLogger(RoleServiceImpl.class);
 
     @Value("${app.roles.admin}")
     private String roleAdmin;
@@ -33,7 +30,7 @@ public class RoleServiceImpl implements RoleService {
         this.roleRepository = roleRepository;
     }
 
-    @Override
+    /*@Override
     public Role save(Role role) {
         return roleRepository.save(role);
     }
@@ -43,6 +40,9 @@ public class RoleServiceImpl implements RoleService {
         List<String> errors = RoleValidator.validate(dto);
         if (!errors.isEmpty()) {
             log.error("Role is not VALID", dto);
+            System.out.println("---------------------errors-----------------------");
+            System.out.println(errors);
+            System.out.println("---------------------errors-----------------------");
             throw new InvalidEntityException("l'entité Role n'est pas valid", EnumErrorCode.ERROR_DB_ITEM_NOTFOUND, errors);
         }
         return RoleDto.fromEntity(
@@ -50,7 +50,7 @@ public class RoleServiceImpl implements RoleService {
                         RoleDto.toEntity(dto)
                 )
         );
-    }
+    }*/
 
     @Override
     public Role findById(String id) throws OtDBItemNotFoundException {
@@ -59,33 +59,26 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public RoleDto findByRoleName(String roleName) {
-        return null;
-    }
-
-    @Override
-    public List<RoleDto> findAll() {
-        return roleRepository.findAll().stream()
-                .map(RoleDto::fromEntity)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public void delete(String id) {
-        if(id == null){
-            log.error("ROLE ID is null");
-            return;
+    public Role findByName(String roleName) throws OtDBItemNotFoundException {
+        if(roleName == null){
+            LOGGER.error("roleName is null");
+            return null;
         }
-        roleRepository.deleteById(id);
+
+        return roleRepository.findByRoleName(roleName)
+                .orElseThrow(()-> new OtDBItemNotFoundException(EnumErrorCode.ERROR_DB_ITEM_NOTFOUND, Role.class.getSimpleName(), "roleName", roleName));
     }
+
 
     @Override
     public void initRoles() {
+        //Optional<Role> roleAdminOptional = roleRepository.findByRoleName(roleAdmin);
         Optional<Role> roleAdminOptional = roleRepository.findById(roleAdmin);
         if(!roleAdminOptional.isPresent())
             roleRepository.save(new Role(roleAdmin, "Administrateur du système"));
 
         Optional<Role> roleUserOptional = roleRepository.findById(roleUser);
+        //Optional<Role> roleUserOptional = roleRepository.findByRoleName(roleUser);
         if(!roleUserOptional.isPresent())
             roleRepository.save(new Role(roleUser, "Utilisateur simple"));
     }

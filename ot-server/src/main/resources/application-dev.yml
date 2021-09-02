@@ -34,10 +34,7 @@ spring:
     jpa:
       properties:
         hibernate:
-          dialect: org.hibernate.dialect.H2Dialect
-  h2:
-    console:
-      enabled: true
+          dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
 # Application configurations (just for test purpose)
 app:
