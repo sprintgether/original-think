@@ -4,8 +4,6 @@
 n
 >src/main/java/com/sprintgether/otserver/model/entity/Mail.java,3/8/38d61e3d5289e5b0e8517d784fd1f779615fc020
 p
-@src/main/java/com/sprintgether/otserver/OtServerApplication.java,6/3/6338c7dbc372b72745ecb9df0085a87cff1d7a2e
-p
 @src/main/java/com/sprintgether/otserver/service/MailService.java,b/5/b5bf2a0660979d5ea6c7a0d544d195e323b53e1d
 Œ
 \src/main/java/com/sprintgether/otserver/event/listener/OnGenerateResetLinkEventListener.java,d/2/d2f0141788fc147ad10d797024dc7d25db99a73e
@@ -19,3 +17,7 @@ x
 Hsrc/main/java/com/sprintgether/otserver/model/enums/EnumJournalType.java,c/f/cf57e6c165ce217a39c065ecc7a29d4ede25c9d4
 k
 ;src/main/java/com/sprintgether/otserver/util/TokenUtil.java,0/c/0c2edb3a8f603178b80d5b8e76771d6233163ec3
+v
+Fsrc/main/java/com/sprintgether/otserver/service/core/ThinkService.java,8/d/8d610ad3efdd06c7abf17f1b60a6517020d5ad7a
+
+Osrc/main/java/com/sprintgether/otserver/service/core/impl/ThinkServiceImpl.java,e/b/eb5e98030244f07cc4758fc4922bca8e41ffd371

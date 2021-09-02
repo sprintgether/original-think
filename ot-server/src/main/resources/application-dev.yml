@@ -13,13 +13,72 @@ spring:
     hibernate:
       ddl-auto: update
 
+  # Email configuration
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: laurentuzumakifst@gmail.com
+    password: Laurent1998
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    servlet:
+      multipart:
+        max-file-size: 10MB
+        max-request-size: 10MB
+        enabled: true
+  main:
+    jpa:
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+
 # Application configurations (just for test purpose)
 app:
+  roles:
+    admin: ADMIN
+    user: USER
   security:
     jwt:
       secret: 0A7A690F19001C887DEB108AE40C54717E740385243437A863569C91BF8AC99B
-      expiration: 86400000
+      expiration: 360000
+    encryption:
+      key: 0A7A690F19001C887DEB10
   token:
-    default:
+    email:
       verification:
-        duration: 864000
+        duration: 360000
+    password:
+      reset:
+        duration: 360000
+
+  mail:
+    sendgrid:
+      key: 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
+      sender: simonsoft7@gmail.com
+    smtp:
+      name: 'Default SMTP'
+      host: smtp.gmail.com
+      username: sprintgether@gmail.com
+      password: "*SprintTeam@2021"
+      port: "587"
+      auth: true
+      start-tls-enable: true
+
+  storage:
+    directory: /D:/Projets/original-think/data
+
+  client:
+    verify:
+      email:
+        path: "/auth/verify-email"
+    reset:
+      password:
+        path: "/auth/reset-password"
+    default-url: "http://localhost:4200"
