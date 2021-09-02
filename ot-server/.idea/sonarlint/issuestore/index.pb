@@ -1,18 +1,12 @@
 
 7
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
-n
->src/main/java/com/sprintgether/otserver/model/entity/Mail.java,3/8/38d61e3d5289e5b0e8517d784fd1f779615fc020
-p
-@src/main/java/com/sprintgether/otserver/OtServerApplication.java,6/3/6338c7dbc372b72745ecb9df0085a87cff1d7a2e
 p
 @src/main/java/com/sprintgether/otserver/service/MailService.java,b/5/b5bf2a0660979d5ea6c7a0d544d195e323b53e1d
 Œ
 \src/main/java/com/sprintgether/otserver/event/listener/OnGenerateResetLinkEventListener.java,d/2/d2f0141788fc147ad10d797024dc7d25db99a73e
 ‡
 Wsrc/main/java/com/sprintgether/otserver/event/listener/OnUserAccountChangeListener.java,6/a/6acaf2da91c2a383edee04ab41fc210e7c05f1c5
-y
-Isrc/main/java/com/sprintgether/otserver/service/impl/MailServiceImpl.java,7/d/7d9ac44ab456b93d258433ff007bd4513427a9c9
 }
 Msrc/test/java/com/sprintgether/otserver/service/impl/MailServiceImplTest.java,7/4/740fb3b0bbe86c96274cc29f60c845be1b310577
 x

@@ -52,15 +52,15 @@ public class User extends MainEntity {
     @JoinTable(name = "ot_user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_name"))
-    private Set<Role> roles = new HashSet<>();
+    private Set<Roles> roles = new HashSet<>();
 
-    public void addRole(Role role){
+    public void addRole(Roles role){
         if(roles == null)
             roles = new HashSet<>();
         this.roles.add(role);
     }
 
-    public void removeRole(Role role){
+    public void removeRole(Roles role){
         this.roles.remove(role);
     }
 

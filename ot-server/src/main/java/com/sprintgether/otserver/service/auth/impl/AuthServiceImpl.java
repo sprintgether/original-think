@@ -5,7 +5,7 @@ import com.sprintgether.otserver.exception.*;
 import com.sprintgether.otserver.model.dto.PasswordResetLinkRequest;
 import com.sprintgether.otserver.model.dto.PasswordResetRequest;
 import com.sprintgether.otserver.model.dto.UpdatePasswordRequest;
-import com.sprintgether.otserver.model.entity.Role;
+import com.sprintgether.otserver.model.entity.Roles;
 import com.sprintgether.otserver.model.entity.Token;
 import com.sprintgether.otserver.model.entity.User;
 import com.sprintgether.otserver.model.enums.EnumTokenStatus;
@@ -89,7 +89,9 @@ public class AuthServiceImpl implements AuthService {
                 .email(registrationRequest.getEmail())
                 .password(encoder.encode(registrationRequest.getPassword()))
                 .build();
-        Role userRole = roleService.findById(roleUser);
+        Roles userRole = roleService.findById(roleUser); //roleUser
+        //Role userRole = roleService.findByName(roleUser); //"USER"
+
         user.addRole(userRole);
         return userRepository.save(user);
     }

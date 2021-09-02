@@ -1,24 +1,18 @@
 package com.sprintgether.otserver.service.core;
 
 import com.sprintgether.otserver.exception.OtDBItemNotFoundException;
-import com.sprintgether.otserver.model.dto.RoleDto;
-import com.sprintgether.otserver.model.entity.Role;
-
-import java.util.List;
+import com.sprintgether.otserver.model.entity.Roles;
 
 public interface RoleService {
 
-    Role save(Role role);
+    /*Role save(Role role);
 
-    RoleDto createRole(RoleDto roleDto);
+    RoleDto createRole(RoleDto roleDto);*/
 
-    Role findById(String id) throws OtDBItemNotFoundException;
+    Roles findById(String id) throws OtDBItemNotFoundException;
 
-    RoleDto findByRoleName(String roleName);
+    Roles findByName(String roleName) throws OtDBItemNotFoundException;
 
-    List<RoleDto> findAll();
-
-    void delete(String id);
 
     /**
      * Intialiser les rôles dans le système

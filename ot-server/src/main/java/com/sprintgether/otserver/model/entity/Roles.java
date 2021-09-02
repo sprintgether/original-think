@@ -16,7 +16,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "ot_role")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Role implements Serializable {
+public class Roles implements Serializable {   //extends MainEntity {     //
 
     @Id
     private String roleName;
