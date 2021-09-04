@@ -72,13 +72,11 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public void initRoles() {
-        //Optional<Role> roleAdminOptional = roleRepository.findByRoleName(roleAdmin);
-        Optional<Role> roleAdminOptional = roleRepository.findById(roleAdmin);
+        Optional<Role> roleAdminOptional = roleRepository.findByRoleName(roleAdmin);
         if(!roleAdminOptional.isPresent())
             roleRepository.save(new Role(roleAdmin, "Administrateur du système"));
 
-        Optional<Role> roleUserOptional = roleRepository.findById(roleUser);
-        //Optional<Role> roleUserOptional = roleRepository.findByRoleName(roleUser);
+        Optional<Role> roleUserOptional = roleRepository.findByRoleName(roleUser);
         if(!roleUserOptional.isPresent())
             roleRepository.save(new Role(roleUser, "Utilisateur simple"));
     }
