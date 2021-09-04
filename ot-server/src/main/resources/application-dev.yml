@@ -72,7 +72,7 @@ app:
       start-tls-enable: true
 
   storage:
-    directory: /D:/Projets/original-think/data
+    directory: /home/simon/ot/data
 
   client:
     verify:

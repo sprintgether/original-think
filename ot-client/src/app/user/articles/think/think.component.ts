@@ -32,8 +32,11 @@ export class ThinkComponent implements OnInit {
       abstracts: [''],
       journal: [''],
 
-      document: ['', [Validators.required, requiredFileType(['png', 'jpg', 'pdf', 'docx', 'jpeg', 'xls', 'xlxs'])]],
-      cover: ['', [Validators.required, requiredFileType(['png', 'jpg', 'jpeg'])]],
+      document: [''],
+      cover: [''],
+
+      /*document: ['', [Validators.required, requiredFileType(['png', 'jpg', 'pdf', 'docx', 'jpeg', 'xls', 'xlxs'])]],
+      cover: ['', [Validators.required, requiredFileType(['png', 'jpg', 'jpeg'])]],*/
     });
   }
 
@@ -52,8 +55,8 @@ export class ThinkComponent implements OnInit {
     this.think = newThink
     if(isDevMode)
       console.log(this.think)
-      console.log(this.document)
-      console.log(this.cover)
+      console.log(this.f.document)
+      console.log(this.f.cover)
 
     this.articleService.createThink(this.f.document.value, this.f.cover.value, this.think)
     .subscribe(

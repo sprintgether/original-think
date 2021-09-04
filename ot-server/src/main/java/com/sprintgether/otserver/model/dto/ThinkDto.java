@@ -3,10 +3,12 @@ package com.sprintgether.otserver.model.dto;
 import com.sprintgether.otserver.model.entity.Think;
 import lombok.Builder;
 import lombok.Data;
+import lombok.ToString;
 
 import java.time.Instant;
 
 @Data
+@ToString
 @Builder
 public class ThinkDto {
 

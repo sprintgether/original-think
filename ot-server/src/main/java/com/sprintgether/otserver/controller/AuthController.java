@@ -69,13 +69,13 @@ public class AuthController {
 
         User registeredUser = authService.registerUser(registrationRequest);
 
-         String clientUrl = request.getHeader(CLIENT_ORIGIN_HEADER) == null ? clientDefaultUrl : request.getHeader("origin");
-          UriComponentsBuilder urlBuilder = UriComponentsBuilder.fromHttpUrl(clientUrl + clientVerifyEmailPath);
+        String clientUrl = request.getHeader(CLIENT_ORIGIN_HEADER) == null ? clientDefaultUrl : request.getHeader("origin");
+        UriComponentsBuilder urlBuilder = UriComponentsBuilder.fromHttpUrl(clientUrl + clientVerifyEmailPath);
 
         OnUserRegistrationCompleteEvent onUserRegistrationCompleteEvent =
                 new OnUserRegistrationCompleteEvent(registeredUser, urlBuilder);
 
-         //applicationEventPublisher.publishEvent(onUserRegistrationCompleteEvent);
+        //applicationEventPublisher.publishEvent(onUserRegistrationCompleteEvent);
         return new RestResponse("Enregistrement effectuée avec succès. Veuillez consulter votre boîte de messagerie pour vérifier votre adresse mail.", ResponseStatus.SUCCESS, 200);
     }
 

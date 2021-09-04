@@ -14,6 +14,8 @@ import com.sprintgether.otserver.service.core.TalkService;
 import com.sprintgether.otserver.service.core.ThesisService;
 import com.sprintgether.otserver.service.core.ThinkService;
 import io.swagger.annotations.ApiOperation;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.plugins.validation.constraints.Required;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,8 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/article")
 public class ArticleController {
+
+    private static final Logger LOG = LogManager.getLogger(ArticleController.class);
 
     @Autowired
     private ThinkService thinkService;
@@ -43,6 +47,7 @@ public class ArticleController {
                                     @RequestPart("document") MultipartFile document,
                                     @RequestPart("cover") MultipartFile cover,
                                     @RequestPart("think") ThinkDto thinkDto) throws IOException, OtDBItemNotFoundException {
+        LOG.info("Creating a think ...");
         return new RestResponse(thinkService.createThink(customUserDetails.getId(), document, cover, thinkDto), "Think crée avec succès", ResponseStatus.SUCCESS, 200);
     }
 

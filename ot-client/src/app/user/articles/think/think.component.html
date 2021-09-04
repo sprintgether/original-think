@@ -1,16 +1,14 @@
 <div class="container mt-2">
-    <form [formGroup]="thinkForm" (ngSubmit)="onThinkSubmit()" enctype="multipart/form-data"> <!--div> </div-->
+    <form [formGroup]="thinkForm" (ngSubmit)="onThinkSubmit()"> <!--div> </div-->
         <div class="form-row">
             <div class="form-group col-md-6">
-                <!--app-file-upload formControlName="document" (fileChangeEvent) = "onDocumentChanged($event)"></app-file-upload-->
                 <label for="document">Document</label>
-                <input type="file" class="form-control" id="document" formControlName="document" placeholder="document" (change)="onDocumentChanged($event)">
+                <app-file-upload formControlName="document" (fileChangeEvent)="onDocumentChanged($event)"></app-file-upload>
             </div>
 
             <div class="form-group col-md-6">
-                <label for="document">Cover</label>
-                <input type="file" class="form-control" id="cover" formControlName="cover" placeholder="cover" (change)="onCoverChanged($event)">
-                <!--app-file-upload formControlName="cover" (fileChangeEvent) = "onCoverChanged($event)"></app-file-upload-->
+                <label for="cover">Cover</label>
+                <app-file-upload formControlName="cover" (fileChangeEvent)="onCoverChanged($event)"></app-file-upload>
             </div>
             
         </div>
