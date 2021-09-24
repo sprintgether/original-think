@@ -1,210 +1,95 @@
-<div class="navbar-area">
-  <!-- topbar end-->
-  <div class="topbar-area">
-    <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-7 align-self-center">
-          <div class="topbar-menu text-md-left text-center">
-            <ul class="align-self-center">
-              <li><a href="#">Author</a></li>
-              <li><a href="#">Advertisment</a></li>
-              <li><a href="#">Member</a></li>
-              <li><a href="#">Sitemap</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-5 mt-2 mt-md-0 text-md-right text-center">
-          <div class="topbar-social">
-            <div class="topbar-date d-none d-lg-inline-block"><i class="fa fa-calendar"></i>{{today | date:'medium'}}
-            </div>
-            <ul *ngIf="!username"  class="social-area social-area-2">
-              <li><a class="facebook-icon" href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a class="twitter-icon" href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a class="youtube-icon" href="#"><i class="fa fa-youtube-play"></i></a></li>
-              <li><a class="instagram-icon" href="#"><i class="fa fa-instagram"></i></a></li>
-              <li><a class="google-icon" href="#"><i class="fa fa-google-plus"></i></a></li>
-            </ul> &nbsp;&nbsp;
-            
-            <button *ngIf="!username" class="btn mb-2" style="background-color: #615B36; color: white; font-size: 1em;" [routerLink]="['/auth/login']"> 
-              <i class="fa fa-user-circle fa-xs"></i> &nbsp;
-              <span style="font-weight: bold;">SE  CONNECTER  </span>
-          </button> 
-
-
-          <div *ngIf="username" class="btn-group dropleft">
-            <button type="button" class="btn btn-connexion" data-toggle="dropdown" 
-            aria-haspopup="true" aria-expanded="false"  style="font-size: 30px; color: white;">
-              <i class="fa fa-user-circle fa-xs"></i>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#" style="padding: 20px; font-size: 20px;">
-                <i class="fa fa-user-circle fa-xs"></i> &nbsp;
-                <span>{{username}}</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
-                <i class="fa fa-key"></i> &nbsp;
-                <span>Change password</span> 
-              </a>
-              <a class="dropdown-item" href="#">
-                <i class="fa fa-sign-in"></i> &nbsp;
-                <span>Se deconncter</span> 
-              </a>
-              <a class="dropdown-item" href="#"> 
-                <i class="fa fa-info-circle"></i> &nbsp;
-                <span>Aide</span>
-              </a>
-            </div>
-          </div>
-
-            <!--button *ngIf="username" class="btn mb-2" style="color: white !important; " [routerLink]="['/auth/login']" style="font-size: 30px;"> 
-              <i class="fa fa-user-circle fa-xs"></i>
-          </button-->  
-          </div>
-
+<div class="page-wrapper chiller-theme toggled">
+  <a id="show-sidebar" class="btn btn-sm" href="javascript:void(0)" 
+    style="z-index: 5000; background-color: #938953 !important;" (click)="changeValue()">
+    <i class="fas fa-bars" style="color: white;"></i>
+  </a>
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand" style="padding-left: 0 !important; padding-top: 5px !important;">
+        <div class="btn-group float-left sidebarBrand" style="height: 38px; width: 100%;">
+          <img src="../../assets/img/ot-logo.png" alt="" height="40" width="40" style="border-radius: 50%;"> &nbsp;
+          &nbsp;
+          <a href="javascript:void(0)">Original Think</a>
+          <!--div id="close-sidebar">
+            <i class="fas fa-times"></i>
+          </div-->
         </div>
 
-        <!--div class="col-lg-2 col-md-2 mt-2 mt-md-0 text-md-right text-center">
-          <button class="btn" style="border: 1px solid red;"> <i class="fa fa-user"></i> SE CONNECTER</button>
-        </div-->
-      </div>
-    </div>
-  </div>
-
-  <!-- adbar end-->
-  <div class="adbar-area bg-black d-none d-lg-block" style="background-color: #E0DCC1">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xl-6 col-lg-5 align-self-center">
-          <div class="logo text-md-left text-center">
-            <a class="main-logo" href="index.html"><img src="../../assets/img/logo.png" alt="img"></a>
-          </div>
-        </div>
-        <div class="col-xl-6 col-lg-7 text-md-right text-center">
-          <a href="#" class="adbar-right">
-            <img src="../../assets/img/1.png">
-          </a>
+        <div id="close-sidebar" style="font-size: 30px;">
+          <!--i class="fas fa-times"></i-->
+          <i class="fas fa-arrow-circle-left" (click)="changeValue()"></i>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- navbar start -->
-  <nav class="navbar navbar-expand-lg" style="background-color: #615B36 !important">
-    <div class="container-fluid nav-container">
-      <div class="responsive-mobile-menu">
-        <div class="logo d-lg-none d-block">
-          <a class="main-logo" href="index.html"><img src="../../assets/img/logo.png" alt="img"></a>
-        </div>
-        <button class="menu toggle-btn d-block d-lg-none" data-target="#nextpage_main_menu" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="icon-left"></span>
-          <span class="icon-right"></span>
-        </button>
-      </div>
-      <div class="nav-right-part nav-right-part-mobile" style="color: white !important;">
-        <a class="search header-search" href="#" style="color: white !important;"><i class="fa fa-search"></i></a>
-      </div>
-      <div class="collapse navbar-collapse" id="nextpage_main_menu">
-        <ul class="navbar-nav menu-open">
-          <li class="current-menu-item">
-            <a routerLink="/home" routerLinkActive="active">Home</a>
+      <div class="sidebar-menu">
+        <ul>
+          <li>
+            <a routerLink="home" routerLinkActive="active">
+              <span>Home</span>
+            </a>
           </li>
-          <li class="current-menu-item">
-            <a routerLink="/user/think" routerLinkActive="active">Original thinks presentation</a>
+          <li>
+            <a routerLink="think" routerLinkActive="active">
+              <span>Original think</span>
+            </a>
           </li>
-          <li class="current-menu-item">
-            <a routerLink="/user/thesis" routerLinkActive="active">Original thesis presentation</a>
+          <li>
+            <a routerLink="thesis" routerLinkActive="active">
+              <span>Original Thesis</span>
+            </a>
           </li>
-          <li class="current-menu-item">
-            <a routerLink="/user/talk" routerLinkActive="active">Original talk presentation</a>
+          <li>
+            <a routerLink="talk" routerLinkActive="active">
+              <span>Original Talks</span>
+            </a>
           </li>
-          <li class="current-menu-item">
-            <a routerLink="/user/studytrip" routerLinkActive="active">Original studytrip presentation</a>
+          <li>
+            <a routerLink="studytrip" routerLinkActive="active">
+              <span>Original Studytrip</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="think-notification" routerLinkActive="active">
+              <span>Original thinks Notifications</span>
+            </a>
           </li>
         </ul>
       </div>
-      <div class="nav-right-part nav-right-part-desktop" >
-        <div class="menu-search-inner" style="background-color: #938953">
-          <input type="text" placeholder="Search For">
-          <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
+      <!-- sidebar-menu  -->
+    </div>
+    <!-- sidebar-content  -->
+    <div class="sidebar-footer">
+      <a href="#">
+        <i class="fa fa-bell"></i>
+        <span class="badge badge-pill badge-warning notification">3</span>
+      </a>
+      <a href="#">
+        <i class="fa fa-envelope"></i>
+        <span class="badge badge-pill badge-success notification">7</span>
+      </a>
+      <a href="#">
+        <i class="fa fa-cog"></i>
+        <span class="badge-sonar"></span>
+      </a>
+      <a href="#">
+        <i class="fa fa-power-off"></i>
+      </a>
+    </div>
+  </nav>
+
+
+  <main class="page-content" style="margin-top: -23px; z-index: -1;">
+    <app-header [displayLogo]="value" ></app-header>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <router-outlet></router-outlet>
         </div>
       </div>
+      <hr>
+
+      <app-footer></app-footer>
     </div>
-  </nav>
+  </main>
 
 </div>
-
-
-<router-outlet></router-outlet>
-
-
-<!--nav class="navbar navbar-expand-xxl navbar-dark" style="background-color: #E0DCC1 !important; width: 100%;">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" style="border: #ADA361 solid 2px;">
-      <span class="navbar-toggler-icon " ></span>
-    </button>
-
-    <a href="#home" class="navbar-brand">
-      <img src="../../assets/img/ot-logo.png" alt="company logo" width="50" class="img-fluid rounded-circle"/>  &nbsp;
-      <span class="" style="font-weight: bolder; color: #4D3EAD;"> Orignal Think </span>
-    </a> 
-
-    <div class="d-none d-md-flex align-items-between">
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <i class="fa fa-arrow-up fa-10x" style="color: #ADA361; cursor: pointer;"></i>
-      </form> &nbsp;
- 
-      <div class="avatar-icon d-flex flex-wrap">
-          <h6 class="mr-3 align-self-center rounded-circle p-3" style="color: #4D3EAD; background-color: #ADA361;">{{username}}</h6>
-        </div>
-    </div>
-
-    
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="navbar-nav mx-auto" >
-        <li class="nav-item active  text-primary">
-            <a href="#home" class="nav-link text-primary">Home</a>
-          </li>
-        <li class="nav-item ">
-          <a href="#othinks" class="nav-link text-primary">Orignal thinks presentation</a>
-        </li>
-        <li class="nav-item ">
-          <a href="#othesis" class="nav-link text-primary">Orignal thesis presentation</a>
-        </li>
-        <li class="nav-item ">
-          <a href="#otTalks" class="nav-link text-primary">Orignal talks presentation</a>
-        </li>
-        <li class="nav-item ">
-          <a href="#otn" class="nav-link text-primary">Orignal thinks notofication</a>
-        </li>
-        <li class="nav-item "><a href="#ost" class="nav-link text-primary">Orignal study trips</a></li>
-      </ul>
-    </div>
-
-        
-  </nav>
-
-  <div class="container-fluid">
-    <router-outlet></router-outlet>
-  </div>
-
-
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio, culpa! Quibusdam velit alias obcaecati blanditiis dignissimos 
-  explicabo et harum incidunt consequuntur laborum id placeat dolorem, mollitia assumenda natus libero eaque provident. Asperiores 
-  voluptate enim minima reiciendis dolorum accusamus officiis odit atque natus impedit. Maxime porro esse aut dolore asperiores modi, 
-  inventore tempora perferendis sunt minima nobis facere earum consequuntur, iste suscipit praesentium amet odio ducimus, voluptatem 
-  mollitia culpa similique nemo! At facere culpa doloribus magnam inventore ab error officiis et qui blanditiis earum ratione saepe 
-  nulla voluptatum tempora consequuntur, assumenda esse. Recusandae mollitia similique aut deleniti perferendis nihil possimus sint.
-</p>
-
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio, culpa! Quibusdam velit alias obcaecati blanditiis dignissimos 
-  explicabo et harum incidunt consequuntur laborum id placeat dolorem, mollitia assumenda natus libero eaque provident. Asperiores 
-  voluptate enim minima reiciendis dolorum accusamus officiis odit atque natus impedit. Maxime porro esse aut dolore asperiores modi, 
-  inventore tempora perferendis sunt minima nobis facere earum consequuntur, iste suscipit praesentium amet odio ducimus, voluptatem 
-  mollitia culpa similique nemo! At facere culpa doloribus magnam inventore ab error officiis et qui blanditiis earum ratione saepe 
-  nulla voluptatum tempora consequuntur, assumenda esse. Recusandae mollitia similique aut deleniti perferendis nihil possimus sint.
-</p-->
-
-
-<app-footer></app-footer>

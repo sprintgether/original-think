@@ -6,11 +6,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { HeaderComponent } from './header/header.component';
 
 
 
 @NgModule({
-  declarations: [FooterComponent, FileUploadComponent],
+  declarations: [FooterComponent, FileUploadComponent, HeaderComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -22,6 +23,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 ],
   exports: [
     FooterComponent,
+    HeaderComponent,
     FileUploadComponent,
     HttpClientModule,
     //AngularFontAwesomeModule,

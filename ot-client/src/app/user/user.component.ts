@@ -8,40 +8,44 @@ import * as $ from 'jquery';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  username: string;
-   //gestion des dates
-   today: number = Date.now();
-
+  value = false;
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.getCurrentUser();
-
-    /** jquery */
-     /*-------------------------------------
-          menu
-      -------------------------------------*/
-      $('.navbar-area .menu').on('click', function() {
-        $(this).toggleClass('open');
-        $('.navbar-area .navbar-collapse').toggleClass('sopen');
-    });
-
-    /**end jquery */
-  }
-
-  getCurrentUser() {
-    this.userService.getCurrentUser().subscribe(
-      (response) => {
-        this.username = response.data['email'];
-      },
-      (error) => {
-        console.log("USER");
+    $(".sidebar-dropdown > a").click(function() {
+      $(".sidebar-submenu").slideUp(200);
+      if (
+        $(this)
+          .parent()
+          .hasClass("active")
+      ) {
+        $(".sidebar-dropdown").removeClass("active");
+        $(this)
+          .parent()
+          .removeClass("active");
+      } else {
+        $(".sidebar-dropdown").removeClass("active");
+        $(this)
+          .next(".sidebar-submenu")
+          .slideDown(200);
+        $(this)
+          .parent()
+          .addClass("active");
       }
-    );
+    });
+    
+    $("#close-sidebar").click(function() {
+      $(".page-wrapper").removeClass("toggled");
+    });
+    $("#show-sidebar").click(function() {
+      $(".page-wrapper").addClass("toggled");
+    });
+    
+    
   }
 
-
-
-
+  changeValue(){
+    this.value = !this.value;
+  }
 
 }

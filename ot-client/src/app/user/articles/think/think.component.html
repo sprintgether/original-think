@@ -1,47 +1,7 @@
-<div class="container mt-2">
-    <form [formGroup]="thinkForm" (ngSubmit)="onThinkSubmit()"> <!--div> </div-->
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="document">Document</label>
-                <app-file-upload formControlName="document" (fileChangeEvent)="onDocumentChanged($event)"></app-file-upload>
-            </div>
+<router-outlet></router-outlet>
 
-            <div class="form-group col-md-6">
-                <label for="cover">Cover</label>
-                <app-file-upload formControlName="cover" (fileChangeEvent)="onCoverChanged($event)"></app-file-upload>
-            </div>
-            
-        </div>
 
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="journal">journal</label>
-                <input type="text" class="form-control" id="journal" formControlName="journal" placeholder="journal" value="journalll">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="theme">theme</label>
-                <input type="text" class="form-control" formControlName="theme" id="theme" placeholder="theme">
-            </div>
-        </div>
 
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="domain">domain</label>
-                <input type="text" class="form-control" id="domain" formControlName="domain" placeholder="domain">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="description">description</label>
-                <input type="text" class="form-control" id="description" formControlName="description" placeholder="description">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="abstract">abstracts</label>
-                <input type="text" class="form-control" id="abstracts" formControlName="abstracts" placeholder="Ajouter un résumé">
-            </div>
-        </div>
 
-        <div class=" col-md-6 mx-auto">
-            <input class="btn btn-primary btn-block mb-2 mt-2 connexion" type="submit" value="Créer" >
-        </div>
 
-    </form>
-</div>
+<!--app-add-think></app-add-think-->

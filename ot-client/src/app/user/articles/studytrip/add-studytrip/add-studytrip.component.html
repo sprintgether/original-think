@@ -1,0 +1,86 @@
+<div class="container" style="margin-top: -30px">
+    <div class="row">
+        <div class="col-12" style="background-color: #f5f5f5;">
+            <div  class="d-flex justify-content-between">
+                <h5  class="mt-1" >
+                    <a routerLink="/user/studytrip/display-studytrip">
+                         <span style="font-size: 0.8em; color: #615B36; cursor: pointer;" >Studytrip </span>
+                    </a>
+                    <i class="fa fa-chevron-right" style="font-size: 0.6em;"></i> 
+                    <span style="font-size: 0.8em; color:  #938953;"> Ajouter</span>
+                </h5>
+                <a class="btn btn-primary" routerLink="/user/studytrip/display-studytrip" >Liste des Studytrip </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4" style="background-color: #f5f5f5; ">
+    <form [formGroup]="studytripForm" (ngSubmit)="onStudytripSubmit()" class="pt-3 pb-1 w-100" style="border-radius: 5px;"> 
+        <div class="form-group row">
+            <label for="document" class="col-sm-2 col-form-label" style="color: #938953; font-weight: bold;">Document</label>
+            <div class="col-sm-10">
+                <app-file-upload formControlName="document" (fileChangeEvent)="onDocumentChanged($event)"></app-file-upload>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="cover" class="col-sm-2 col-form-label" style="color: #938953; font-weight: bold;">Cover</label>
+            <div class="col-sm-10">
+                <app-file-upload formControlName="cover" (fileChangeEvent)="onCoverChanged($event)"></app-file-upload>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="locality" class="col-sm-2 col-form-label" style="color: #938953; font-weight: bold;">Locality</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="locality"  id="locality" placeholder="locality">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="mentorName" class="col-sm-2 col-form-label" style="color: #938953; font-weight: bold;">MentorName</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="mentorName" id="mentorName" placeholder="mentorName">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="mentorEmail" class="col-sm-2 col-form-label" style="color: #938953; font-weight: bold;">MentorEmail</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" formControlName="mentorEmail" id="mentorEmail" placeholder="mentorEmail">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="theme" class="col-sm-2 col-form-label" style="color: #938953; font-weight: bold;">Theme</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="theme" id="theme" placeholder="theme">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="domain" class="col-sm-2 col-form-label" style="color: #938953; font-weight: bold;">Domain</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="domain" formControlName="domain" placeholder="domain">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="description" class="col-sm-2 col-form-label" style="color: #938953; font-weight: bold;">Description</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="description" rows="3" formControlName="description" placeholder="Ajouter une description"></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="abstracts" class="col-sm-2 col-form-label" style="color: #938953; font-weight: bold;">Abstracts</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="abstracts" rows="3" formControlName="abstracts"  placeholder="Ajouter un résumé"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-10">
+              <button type="submit" class="btn btn-primary">Créer une studytrip</button> &nbsp; &nbsp;
+              <button type="submit" class="btn btn-secondary">Annuler</button>
+            </div>
+          </div>
+
+    </form>
+</div>

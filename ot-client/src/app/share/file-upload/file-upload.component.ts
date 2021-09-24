@@ -17,7 +17,7 @@ export class FileUploadComponent implements ControlValueAccessor {
   @Input() progress;
   @Output() fileChangeEvent = new EventEmitter<boolean>()
   onChange: Function;
-  private file: File | null = null;
+  public file: File | null = null;
 
   @HostListener('change', ['$event.target.files']) emitFiles( event: FileList ) {
     const file = event && event.item(0);
